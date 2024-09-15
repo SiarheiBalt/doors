@@ -18,8 +18,8 @@ const Header: FC<Props> = () => {
                             height={300}
                             alt="Picture of the author" />
                     </Link>
-                    <Link href="/" className="mr-4">Home</Link>
-                    <Link href="./main" className="mr-4">Main</Link>
+                    <Link href="/" className="mr-4 ml-8">Home</Link>
+                    <Link href="./catalog" className="mr-4">Catalog</Link>
                 </div>
             </div>
         </header>

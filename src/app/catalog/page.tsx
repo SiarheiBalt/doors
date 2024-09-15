@@ -1,9 +1,9 @@
 import {cl} from "../../classes/global";
 
-export default function Main() {
+export default function Catalog() {
     return  <div className={cl.container}>
         <div className="pt-10">
-            <span className={cl.title}>Main page</span>
+            <span className={cl.title}>Catalog</span>
         </div>
     </div>
 }
