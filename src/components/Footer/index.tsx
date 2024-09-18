@@ -7,7 +7,7 @@ type Props = {}
 
 const Footer: FC<Props> = () => {
     return (
-        <footer className="absolute bottom-0 w-full bg-slate-900" >
+        <footer className="fixed  bottom-0 w-full bg-slate-900" >
             <div className={cs(cl.container, "pt-5 pb-5")}>
                 <span className="text-slate-100">Copyright © 2024</span>
             </div>

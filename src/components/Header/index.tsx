@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import icon from '../../../public/pr-logo.png';
+import icon from '../../../public/logo.png';
 import {cl} from "../../classes/global";
 
 type Props = {}
@@ -16,6 +16,7 @@ const Header: FC<Props> = () => {
                             src={icon}
                             width={122}
                             height={300}
+                            style={{ width: "auto", height: "auto" }}
                             alt="Picture of the author" />
                     </Link>
                     <Link href="/" className="mr-4 ml-8">Home</Link>
