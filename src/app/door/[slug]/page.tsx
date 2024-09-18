@@ -2,7 +2,7 @@
 import React from 'react';
 import {doors} from "../../../helpers/test-data";
 import { usePathname } from 'next/navigation';
-import { Swiper, SwiperSlide, Navi} from 'swiper/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import Image from "next/image";
 import 'swiper/css';
@@ -20,7 +20,7 @@ const Page = () => {
 
     return (
         <div className={cl.container}>
-            <div className="w-1/2 mt-20">
+            <div className="w-4/5 md:w-1/2 mt-20">
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     spaceBetween={30}

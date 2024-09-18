@@ -9,9 +9,9 @@ export default function Catalog() {
     const doorsTest = doors.concat(doors)
 
     return  <div className={cl.container}>
-        <div className="flex pt-8 mb-20">
-            <div className="border border-gray-100 mr-4">
-                <div className="w-80 flex justify-center pt-6">
+        <div className="flex pt-8 mb-20 flex-col md:flex-row">
+            <div className="mr-4">
+                <div className="w-80 flex justify-center pt-6 pb-6">
                     <span className={cl.title}>Filters</span>
                 </div>
             </div>
