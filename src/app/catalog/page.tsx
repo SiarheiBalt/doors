@@ -1,6 +1,8 @@
 import {cl} from "../../classes/global";
 import {doors} from "../../helpers/test-data";
 import Image from "next/image";
+import Link from 'next/link'
+
 import cs from "classnames";
 
 export default function Catalog() {
@@ -18,14 +20,16 @@ export default function Catalog() {
                 {doorsTest.map((door, index) => {
 
                     return <div key={index} className="border border-gray-100" style={{height: 523, width: 235}}>
-                        <div className="pt-8 pb-8 flex justify-center cursor-pointer">
-                            <Image height={280}
-                                   width={120}
-                                   src={door.images[0].imgPath}
-                                   alt=""
-                                   style={{width: "auto", height: "auto"}}
-                            />
-                        </div>
+                        <Link href={`door/${door.name}`}>
+                            <div className="pt-8 pb-8 flex justify-center cursor-pointer hover:bg-gray-50">
+                                <Image height={280}
+                                       width={120}
+                                       src={door.images[0].imgPath}
+                                       alt=""
+                                       style={{width: "auto", height: "auto"}}
+                                />
+                            </div>
+                        </Link>
                         <div className="flex flex-col items-center justify-center pt-2 border-t border-gray-100">
                             <span>1.1P</span>
                             <span className={cs(cl.subTitle, "p-2")}>999 руб.</span>
