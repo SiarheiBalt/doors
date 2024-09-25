@@ -1,12 +1,19 @@
+"use client"
 import React, {FC} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import icon from '../../../public/logo.png';
 import {cl} from "../../classes/global";
+import { usePathname } from 'next/navigation'
+import {paths} from "../../constants";
 
 type Props = {}
 
 const Header: FC<Props> = () => {
+    const pathname = usePathname();
+
+    if(pathname === `/${paths.admin}`) return null;
+
     return (
         <header className="bg-slate-50 border-b-2 pt-5 pb-5">
             <div className={cl.container}>
