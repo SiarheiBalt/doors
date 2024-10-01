@@ -16,7 +16,7 @@ const Page = () => {
     const pathname = usePathname();
 
     const model = pathname.split("/")[2];
-    const modelData = doors.filter((door) => door.name === model)?.[0];
+    const series = doors.filter((door) => door.serial.toLowerCase() === model)?.[0];
 
     return (
         <div className={cl.container}>
@@ -31,7 +31,7 @@ const Page = () => {
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
-                    {modelData.images.map((image, index) => {
+                    {series && series.colors.map((image, index) => {
                         return <SwiperSlide key={index}>
                             <div className="flex justify-center p-10">
                                 <Image

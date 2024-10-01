@@ -20,11 +20,11 @@ export default function Catalog() {
                 {doorsTest.map((door, index) => {
 
                     return <div key={index} className="border border-gray-100" style={{height: 523, width: 235}}>
-                        <Link href={`door/${door.name}`}>
+                        <Link href={`door/${door.serial.toLowerCase()}`}>
                             <div className="pt-8 pb-8 flex justify-center cursor-pointer hover:bg-gray-50">
                                 <Image height={280}
                                        width={120}
-                                       src={door.images[0].imgPath}
+                                       src={door.colors[0].imgPath}
                                        alt=""
                                        style={{width: "auto", height: "auto"}}
                                 />
