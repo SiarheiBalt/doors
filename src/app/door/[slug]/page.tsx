@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, {useEffect} from 'react';
 import {doors} from "../../../helpers/test-data";
 import { usePathname } from 'next/navigation';
 import {Swiper, SwiperSlide} from 'swiper/react';
@@ -9,11 +9,24 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import {useAppDispatch} from "../../../lib/hooks";
+import {setCurrentDoor} from "../../../lib/features/door.slice";
+import StoreProvider from "../../../providers/StoreProvider";
 
 import {cl} from "../../../classes/global";
 
-const Page = () => {
+const Door = () => {
+    const dispatch = useAppDispatch();
     const pathname = usePathname();
+
+    useEffect(() => {
+        const model = pathname.split("/")[2];
+        const series = doors.filter((door) => door.serial.toLowerCase() === model)?.[0];
+        if(series) {
+            //@ts-ignore
+            dispatch(setCurrentDoor(series));
+        }
+    }, [])
 
     const model = pathname.split("/")[2];
     const series = doors.filter((door) => door.serial.toLowerCase() === model)?.[0];
@@ -47,5 +60,11 @@ const Page = () => {
         </div>
     );
 };
+
+const Page = () => {
+    return <StoreProvider>
+        <Door />
+    </StoreProvider>;
+}
 
 export default Page;
