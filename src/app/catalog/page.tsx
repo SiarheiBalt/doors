@@ -1,23 +1,32 @@
-import {cl} from "../../classes/global";
+"use client"
+import React, {useEffect} from 'react';
 import {doors} from "../../helpers/test-data";
 import Image from "next/image";
-import Link from 'next/link'
+import Link from 'next/link';
+import SelectSeries from "./../../components/SelectSeries";
+import StoreProvider from "../../providers/StoreProvider";
+import {useAppSelector, useAppDispatch} from "../../lib/hooks";
+import {setSeries} from "../../lib/features/door.slice";
 
+import {cl} from "../../classes/global";
 import cs from "classnames";
 
-export default function Catalog() {
-    const doorsTest = doors.concat(doors)
+function Catalog() {
+    const dispatch = useAppDispatch();
+    const {series, currentSerial} = useAppSelector((state) => state.doors);
 
     return  <div className={cl.container}>
         <div className="flex pt-8 mb-20 flex-col md:flex-row">
             <div className="mr-4">
+                <SelectSeries series={series}/>
                 <div className="w-80 flex justify-center pt-6 pb-6">
                     <span className={cl.title}>Filters</span>
                 </div>
             </div>
 
             <div className="flex flex-wrap">
-                {doorsTest.map((door, index) => {
+                {doors.map((door, index) => {
+                    if(currentSerial && door.serial !== currentSerial) return null;
 
                     return <div key={index} className="border border-gray-100" style={{height: 523, width: 235}}>
                         <Link href={`door/${door.serial.toLowerCase()}`}>
@@ -45,3 +54,11 @@ export default function Catalog() {
         </div>
     </div>
 }
+
+const Page = () => {
+    return <StoreProvider>
+        <Catalog />
+    </StoreProvider>;
+}
+
+export default Page;

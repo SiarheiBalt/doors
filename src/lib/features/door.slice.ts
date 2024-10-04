@@ -3,10 +3,13 @@ import {Door} from "../../models/doors";
 
 export interface WizardState {
     currentDoor: Door | null,
+    series: string[] | null,
+    currentSerial: string | undefined
 }
 
 export const initialState: WizardState = {
     currentDoor: null,
+    series: ["GR", "PA"]
 };
 
 export const doorSlice = createSlice({
@@ -16,11 +19,19 @@ export const doorSlice = createSlice({
         setCurrentDoor: (state, action: PayloadAction<Door | null>) => {
             state.currentDoor = action.payload;
         },
+        setSeries: (state, action: PayloadAction<string[] | null>) => {
+            state.series = action.payload;
+        },
+        setCurrentSerial: (state, action: PayloadAction<string>) => {
+            state.currentSerial = action.payload;
+        }
     },
 });
 
 export const {
-    setCurrentDoor
+    setCurrentDoor,
+    setSeries,
+    setCurrentSerial
 } = doorSlice.actions;
 
 export const doorState = (state: WizardState) => state;

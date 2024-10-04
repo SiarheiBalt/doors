@@ -14,7 +14,7 @@ export default function StoreProvider({
         // Create the store instance the first time this renders
         storeRef.current = makeStore();
         //@ts-ignore
-        storeRef.current && storeRef.current?.dispatch(setCurrentDoor(storeRef.current,null));
+        storeRef.current && storeRef.current?.dispatch(setCurrentDoor(null));
     }
 
     return <Provider store={storeRef.current}>{children}</Provider>
