@@ -1,15 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {Door} from "../../models/doors";
+import {doors} from "../../helpers/test-data";
 
-export interface WizardState {
+export interface DoorState {
     currentDoor: Door | null,
     series: string[] | null,
-    currentSerial: string | undefined
+    currentSerial: string | undefined,
+    doors: Door[] | null
 }
 
-export const initialState: WizardState = {
+export const initialState: DoorState = {
     currentDoor: null,
-    series: ["GR", "PA"]
+    series: ["GR", "PA"],
+    currentSerial: undefined,
+    doors: doors
 };
 
 export const doorSlice = createSlice({

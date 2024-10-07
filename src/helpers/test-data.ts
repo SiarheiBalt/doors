@@ -27,7 +27,7 @@ export const doors: Door[] = [
     },
     {
         serial: "GR",
-        model: "1.2",
+        model: "1.3",
         canvasSizes: ["600x2000", "700x2000"],
         completeness: Completeness,
         colors: [
@@ -38,7 +38,7 @@ export const doors: Door[] = [
     },
     {
         serial: "PA",
-        model: "1.3",
+        model: "1.4",
         canvasSizes: ["600x2000", "700x2000"],
         completeness: Completeness,
         colors: [
@@ -49,7 +49,7 @@ export const doors: Door[] = [
     },
     {
         serial: "PA",
-        model: "1.3",
+        model: "1.5",
         canvasSizes: ["600x2000", "700x2000"],
         completeness: Completeness,
         colors: [
