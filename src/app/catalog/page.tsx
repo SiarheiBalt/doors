@@ -1,17 +1,17 @@
 "use client"
-import React, {} from 'react';
+import React, {useEffect} from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import SelectSeries from "./../../components/SelectSeries";
 import StoreProvider from "../../providers/StoreProvider";
 import {useAppSelector} from "../../lib/hooks";
+import SelectModel from "../../components/SelectModel/index";
 
 import {cl} from "../../classes/global";
 import cs from "classnames";
-import SelectModel from "../../components/SelectModel/index";
 
 function Catalog() {
-    const {series, currentSerial, doors} = useAppSelector((state) => state.doors);
+    const {series, models, currentSerial, doors, currentModel} = useAppSelector((state) => state.doors);
 
     return  <div className={cl.container}>
         <div className="flex pt-8 mb-20 flex-col md:flex-row">
@@ -24,10 +24,11 @@ function Catalog() {
             </div>
 
             <div>
-                <SelectModel />
+                {models && <div className="mb-4"><SelectModel models={models} currentModel={currentModel}/></div>}
                 <div className="flex flex-wrap">
                     {doors.map((door, index) => {
-                        if(currentSerial && door.serial !== currentSerial) return null;
+                        if((currentSerial && door.serial !== currentSerial) ||
+                            (currentModel && door.model !== currentModel)) return null;
 
                         return <div key={index} className="border border-gray-100" style={{height: 523, width: 235}}>
                             <Link href={`door/${door.serial.toLowerCase()}`}>
