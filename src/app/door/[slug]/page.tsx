@@ -1,6 +1,5 @@
 "use client"
-import React from 'react';
-import {doors} from "../../../helpers/test-data";
+import React, {useEffect} from 'react';
 import { usePathname } from 'next/navigation';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -9,14 +8,28 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import {useAppDispatch, useAppSelector} from "../../../lib/hooks";
+import {setCurrentDoor} from "../../../lib/features/door.slice";
+import StoreProvider from "../../../providers/StoreProvider";
 
 import {cl} from "../../../classes/global";
 
-const Page = () => {
+const Door = () => {
+    const dispatch = useAppDispatch();
+    const {doors} = useAppSelector((state) => state.doors);
     const pathname = usePathname();
 
+    useEffect(() => {
+        const model = pathname.split("/")[2];
+        const series = doors.filter((door) => door.serial.toLowerCase() === model)?.[0];
+        if(series) {
+            dispatch(setCurrentDoor(series));
+        }
+        // eslint-disable-next-line
+    }, [])
+
     const model = pathname.split("/")[2];
-    const modelData = doors.filter((door) => door.name === model)?.[0];
+    const series = doors.filter((door) => door.serial.toLowerCase() === model)?.[0];
 
     return (
         <div className={cl.container}>
@@ -31,7 +44,7 @@ const Page = () => {
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
-                    {modelData.images.map((image, index) => {
+                    {series && series.colors.map((image, index) => {
                         return <SwiperSlide key={index}>
                             <div className="flex justify-center p-10">
                                 <Image
@@ -47,5 +60,11 @@ const Page = () => {
         </div>
     );
 };
+
+const Page = () => {
+    return <StoreProvider>
+        <Door />
+    </StoreProvider>;
+}
 
 export default Page;

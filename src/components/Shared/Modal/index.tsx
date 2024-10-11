@@ -20,6 +20,7 @@ const Modal:FC<ModalProps> = ({content, title, onClose}) => {
       <div className={cl.container} ref={containerRef}>
         <div className={cl.header}>
           <span className={cl.title}>{title || ""}</span>
+          {/*// eslint-disable-next-line*/}
           {onClose && <img
               src={DelLogo.src}
               className={cl.closeIco}
