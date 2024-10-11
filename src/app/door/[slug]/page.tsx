@@ -12,6 +12,8 @@ import {useAppDispatch, useAppSelector} from "../../../lib/hooks";
 import {setCurrentDoor} from "../../../lib/features/door.slice";
 import StoreProvider from "../../../providers/StoreProvider";
 
+import {Door} from "../../../models/doors";
+
 import {cl} from "../../../classes/global";
 
 const Door = () => {
@@ -21,7 +23,7 @@ const Door = () => {
 
     useEffect(() => {
         const model = pathname.split("/")[2];
-        const series = doors.filter((door) => door.serial.toLowerCase() === model)?.[0];
+        const series = doors && doors.filter((door) => door.serial.toLowerCase() === model)?.[0];
         if(series) {
             dispatch(setCurrentDoor(series));
         }
@@ -29,7 +31,7 @@ const Door = () => {
     }, [])
 
     const model = pathname.split("/")[2];
-    const series = doors.filter((door) => door.serial.toLowerCase() === model)?.[0];
+    const currentSerialDoor: Door | null = doors ? doors.filter((door) => door.serial.toLowerCase() === model)?.[0] : null;
 
     return (
         <div className={cl.container}>
@@ -44,7 +46,7 @@ const Door = () => {
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
-                    {series && series.colors.map((image, index) => {
+                    {currentSerialDoor && currentSerialDoor.colors.map((image, index) => {
                         return <SwiperSlide key={index}>
                             <div className="flex justify-center p-10">
                                 <Image

@@ -26,7 +26,7 @@ function Catalog() {
             <div>
                 {models && <div className="mb-4"><SelectModel models={models} currentModel={currentModel}/></div>}
                 <div className="flex flex-wrap">
-                    {doors.map((door, index) => {
+                    {doors && doors.map((door, index) => {
                         if((currentSerial && door.serial !== currentSerial) ||
                             (currentModel && door.model !== currentModel)) return null;
 

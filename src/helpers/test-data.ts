@@ -17,7 +17,7 @@ export const doors: Door[] = [
         serial: "GR",
         model: "1.2",
         canvasSizes: ["600x2000", "700x2000"],
-        completeness: Completeness,
+        completeness: [Completeness.usual],
         colors: [
             {imgPath: img1, name: "Cream"},
             {imgPath: img2, name: "Black"},
@@ -29,7 +29,7 @@ export const doors: Door[] = [
         serial: "GR",
         model: "1.3",
         canvasSizes: ["600x2000", "700x2000"],
-        completeness: Completeness,
+        completeness: [Completeness.usual],
         colors: [
             {imgPath: img4, name: "Cream"},
             {imgPath: img5, name: "Black"},
@@ -40,7 +40,7 @@ export const doors: Door[] = [
         serial: "PA",
         model: "1.4",
         canvasSizes: ["600x2000", "700x2000"],
-        completeness: Completeness,
+        completeness: [Completeness.usual],
         colors: [
             {imgPath: img7, name: "Cream"},
             {imgPath: img8, name: "Black"},
@@ -51,7 +51,7 @@ export const doors: Door[] = [
         serial: "PA",
         model: "1.5",
         canvasSizes: ["600x2000", "700x2000"],
-        completeness: Completeness,
+        completeness: [Completeness.usual],
         colors: [
             {imgPath: img10, name: "Cream"},
             {imgPath: img11, name: "Black"},
