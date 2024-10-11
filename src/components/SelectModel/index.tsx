@@ -17,9 +17,9 @@ const SelectModel: FC<Props> = ({models, currentModel}) => {
 
     return (
         <div className={styles.container}>
-            {models.map((model) => {
+            {models.map((model, i) => {
                 const isSelected = currentModel && currentModel === model;
-                return <div className={cs(isSelected && styles.currentSerial, styles.modelContainer)} onClick={() => onHandleClick(model)}>
+                return <div key={i} className={cs(isSelected && styles.currentSerial, styles.modelContainer)} onClick={() => onHandleClick(model)}>
                     <span>{model}</span>
                 </div>
             })}

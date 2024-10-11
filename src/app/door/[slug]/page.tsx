@@ -25,6 +25,7 @@ const Door = () => {
         if(series) {
             dispatch(setCurrentDoor(series));
         }
+        // eslint-disable-next-line
     }, [])
 
     const model = pathname.split("/")[2];
