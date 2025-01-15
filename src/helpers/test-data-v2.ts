@@ -10,20 +10,19 @@ import img9 from "/public/test-doors-images/125ZN_ABS_Салинас_светл�
 import img10 from "/public/test-doors-images/125ZN_ABS_Стоун_зеркало.jpg";
 import img11 from "/public/test-doors-images/125ZN_ABS_Стоун_лак_белый.jpg";
 import img12 from "/public/test-doors-images/125ZN_ABS_Стоун_лак_классик.jpg";
-import {Completeness, Door} from "../models/doors";
+import {CompletenessType, DoorView} from "../models/doors";
 
-export const doors: Door[] = [
+export const doors: DoorView[] = [
     {
         serial: "GR",
         model: "1.2",
-        canvasSizes: ["600x2000", "700x2000"],
         completeness: [
             {
-                types: Completeness.usual,
+                type: CompletenessType.usual,
                 description: "Дверное полотно, коробка и наличники"
             },
             {
-                types: Completeness.only,
+                type: CompletenessType.only,
                 description: "Дверное полотно, и все"
             },
         ],
@@ -46,14 +45,13 @@ export const doors: Door[] = [
     {
         serial: "GR",
         model: "1.3",
-        canvasSizes: ["600x2000", "700x2000"],
         completeness: [
             {
-                types: Completeness.usual,
+                type: CompletenessType.usual,
                 description: "Дверное полотно, коробка и наличники"
             },
             {
-                types: Completeness.only,
+                type: CompletenessType.only,
                 description: "Дверное полотно, и все"
             },
         ],
@@ -74,14 +72,13 @@ export const doors: Door[] = [
     {
         serial: "PA",
         model: "1.4",
-        canvasSizes: ["600x2000", "700x2000"],
         completeness: [
             {
-                types: Completeness.usual,
+                type: CompletenessType.usual,
                 description: "Дверное полотно, коробка и наличники"
             },
             {
-                types: Completeness.only,
+                type: CompletenessType.only,
                 description: "Дверное полотно, и все"
             },
         ],
@@ -101,11 +98,11 @@ export const doors: Door[] = [
         canvasSizes: ["600x2000", "700x2000"],
         completeness: [
             {
-                types: Completeness.usual,
+                type: CompletenessType.usual,
                 description: "Дверное полотно, коробка и наличники"
             },
             {
-                types: Completeness.only,
+                type: CompletenessType.only,
                 description: "Дверное полотно, и все"
             },
         ],

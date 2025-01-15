@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {Door} from "../../models/doors";
-import {doors} from "../../helpers/test-data";
+import {DoorView} from "../../models/doors";
+import {doors} from "../../helpers/test-data-v2";
 
 export interface DoorState {
-    currentDoor: Door | null,
+    currentDoor: DoorView | null,
     series: string[] | null,
     models: string[] | null,
     currentSerial: string | undefined,
     currentModel: string | undefined,
-    doors: Door[] | null
+    doors: DoorView[] | null
 }
 
 export const initialState: DoorState = {
@@ -24,7 +24,7 @@ export const doorSlice = createSlice({
     name: 'door',
     initialState,
     reducers: {
-        setCurrentDoor: (state, action: PayloadAction<Door | null>) => {
+        setCurrentDoor: (state, action: PayloadAction<DoorView | null>) => {
             state.currentDoor = action.payload;
         },
         setSeries: (state, action: PayloadAction<string[] | null>) => {
@@ -34,7 +34,7 @@ export const doorSlice = createSlice({
             state.currentSerial = action.payload;
             if(state.doors) {
                 state.models =
-                    doors.filter((door: Door) => door.serial === state.currentSerial).map(door => door.model);
+                    doors.filter((door: DoorView) => door.serial === state.currentSerial).map(door => door.model);
             }
             state.currentModel = undefined;
         },

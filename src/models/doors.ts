@@ -1,21 +1,39 @@
 import {StaticImageData} from "next/image";
 
-export type Door = {
+export type DoorView = {
     serial: string,
     model: string,
-    colors: DoorColor[],
-    canvasSizes: string[],
     completeness: Completeness[],
+    colors: DoorColor[],
+    profiles: Profile[],
+    glasses?: Glass[],
     description?: string | undefined
+}
+
+export type Profile = {
+    name: string,
+    imgPath: string | StaticImageData,
+    hash: string
+}
+
+export type Glass = {
+    name: string,
+    imgPath: string | StaticImageData,
+    hash: string
 }
 
 export type DoorColor = {
     name: string,
     imgPath: string | StaticImageData,
-    description?: string | undefined
+    hash: string
 }
 
-export enum Completeness {
+export type Completeness = {
+    type: CompletenessType,
+    description: string
+}
+
+export enum CompletenessType {
     usual = "Обычный комплект",
     only = "Только полотно"
 }

@@ -8,13 +8,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import {useAppDispatch, useAppSelector} from "../../../lib/hooks";
-import {setCurrentDoor} from "../../../lib/features/door.slice";
-import StoreProvider from "../../../providers/StoreProvider";
+import {useAppDispatch, useAppSelector} from "../../lib/hooks";
+import {setCurrentDoor} from "../../lib/features/door.slice";
+import StoreProvider from "../../providers/StoreProvider";
 
-import {Door} from "../../../models/doors";
+import {DoorView} from "../../models/doors";
 
-import {cl} from "../../../classes/global";
+import {cl} from "../../classes/global";
 
 const Door = () => {
     const dispatch = useAppDispatch();
@@ -31,7 +31,7 @@ const Door = () => {
     }, [])
 
     const model = pathname.split("/")[2];
-    const currentSerialDoor: Door | null = doors ? doors.filter((door) => door.serial.toLowerCase() === model)?.[0] : null;
+    const currentSerialDoor: DoorView | null = doors ? doors.filter((door) => door.serial.toLowerCase() === model)?.[0] : null;
 
     return (
         <div className={cl.container}>
@@ -63,10 +63,10 @@ const Door = () => {
     );
 };
 
-const Page = () => {
+const Index = () => {
     return <StoreProvider>
         <Door />
     </StoreProvider>;
 }
 
-export default Page;
+export default Index;
