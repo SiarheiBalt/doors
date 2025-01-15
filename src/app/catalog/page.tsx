@@ -14,7 +14,7 @@ import cs from "classnames";
 
 function Catalog() {
     const {series, models, currentSerial, doors, currentModel, currentDoor} = useAppSelector((state) => state.doors);
-    console.log(currentDoor)
+
     return <>
         <div className="border-b-2 border-gray-100">
             <SelectSeries series={series} currentSerial={currentSerial} position="top"/>
@@ -34,9 +34,8 @@ function Catalog() {
                     {
                         (currentSerial && !currentModel) ?
                             <ModelsView doors={doors} currentSerial={currentSerial} /> :
-                            <div>{currentModel}</div>
+                            <Door />
                     }
-                    {currentModel && <Door />}
                 </div>
             </div>
         </div>

@@ -25,7 +25,15 @@ export const doorSlice = createSlice({
     initialState,
     reducers: {
         setCurrentDoor: (state, action: PayloadAction<DoorView | null>) => {
-            state.currentDoor = action.payload;
+            if(action.payload !== null) {
+                state.currentDoor = state.doors.find((door) =>
+                    door.serial === state.currentSerial &&
+                    door.model === state.currentModel
+                ) || null;
+            } else {
+                console.log(2)
+                state.currentDoor = null;
+            }
         },
         setSeries: (state, action: PayloadAction<string[] | null>) => {
             state.series = action.payload;
