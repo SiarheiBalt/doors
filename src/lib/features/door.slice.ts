@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {DoorView} from "../../models/doors";
+import {DoorColor, DoorView} from "../../models/doors";
 import {doors} from "../../helpers/test-data-v2";
 
 export interface DoorState {
@@ -8,6 +8,7 @@ export interface DoorState {
     models: string[] | null,
     currentSerial: string | undefined,
     currentModel: string | undefined,
+    currentColor: DoorColor | null,
     doors: DoorView[] | null
 }
 
@@ -17,7 +18,8 @@ export const initialState: DoorState = {
     models: null,
     currentSerial: undefined,
     currentModel: undefined,
-    doors: doors
+    doors: doors,
+    currentColor: null
 };
 
 export const doorSlice = createSlice({
@@ -48,6 +50,9 @@ export const doorSlice = createSlice({
         },
         setCurrentModel: (state, action: PayloadAction<string>) => {
             state.currentModel = action.payload;
+        },
+        setCurrentColor: (state, action: PayloadAction<DoorColor>) => {
+            state.currentColor = action.payload;
         }
 
     },
@@ -57,7 +62,8 @@ export const {
     setCurrentDoor,
     setSeries,
     setCurrentSerial,
-    setCurrentModel
+    setCurrentModel,
+    setCurrentColor
 } = doorSlice.actions;
 
 export const doorState = (state: DoorState) => state;

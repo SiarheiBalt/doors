@@ -9,15 +9,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import {useAppDispatch, useAppSelector} from "../../lib/hooks";
-import {setCurrentDoor} from "../../lib/features/door.slice";
+import {setCurrentDoor, setCurrentColor} from "../../lib/features/door.slice";
 
-import {DoorView} from "../../models/doors";
+import {DoorColor, DoorView} from "../../models/doors";
 
 import {cl} from "../../classes/global";
 
 const Door = () => {
     const dispatch = useAppDispatch();
-    const {doors, currentDoor} = useAppSelector((state) => state.doors);
+    const {doors, currentDoor, currentSerial, currentColor} = useAppSelector((state) => state.doors);
 
     const pathname = usePathname();
 
@@ -27,9 +27,44 @@ const Door = () => {
         // eslint-disable-next-line
     }, [])
 
+    useEffect(() => {
+        if(currentDoor) {
+            dispatch(setCurrentColor(currentDoor.colors[0]));
+        }
+
+        // eslint-disable-next-line
+    }, [currentDoor])
+
+    if(!currentDoor) return null;
+
+    console.log(currentColor)
+
+    const colors = currentDoor.colors.map((color: DoorColor, index: number) => {
+        const rectSizeClass = "h-12 w-26";
+        return <div key={index} className={rectSizeClass + " flex m-1 p-1 hover:outline outline-gray-200"}>
+                <Image
+                    src={color.imgPath}
+                    alt=""
+                    className="cursor-pointer"
+                />
+        </div>
+    })
+
+
     return (
-        <div className={cl.container}>
-            <div className="w-4/5 md:w-1/2 mt-20">
+        <div className="">
+                <div className={cl.title + " pb-10 pt-10"}>
+                    {currentSerial}
+                </div>
+                <hr className="pt-10 pb-10"/>
+                <div className="flex">
+                    <div className={"w-24 flex flex-col items-left justify-center"}>
+                        <span className={cl.subTitle}>Цвет</span>
+                        <span className="text-sm">добавить</span>
+                    </div>
+                    {colors}
+                </div>
+
                 {/*<Swiper*/}
                 {/*    modules={[Navigation, Pagination, Scrollbar, A11y]}*/}
                 {/*    spaceBetween={30}*/}
@@ -52,7 +87,6 @@ const Door = () => {
                 {/*        </SwiperSlide>*/}
                 {/*    })}*/}
                 {/*</Swiper>*/}
-            </div>
         </div>
     );
 };
