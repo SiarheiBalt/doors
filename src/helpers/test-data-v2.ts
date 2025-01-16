@@ -12,6 +12,10 @@ import img11 from "/public/test-doors-images/125ZN_ABS_Стоун_лак_бел�
 import img12 from "/public/test-doors-images/125ZN_ABS_Стоун_лак_классик.jpg";
 import {CompletenessType, DoorView} from "../models/doors";
 
+import cream from "/public/door-rect/cream.jpg";
+import black from "/public/door-rect/black.jpg";
+import yellow from "/public/door-rect/yellow.jpg";
+
 export const doors: DoorView[] = [
     {
         serial: "GR",
@@ -27,17 +31,17 @@ export const doors: DoorView[] = [
             },
         ],
         colors: [
-            {imgPath: img1, name: "Cream", hash: "1"},
-            {imgPath: img2, name: "Black", hash: "2"},
-            {imgPath: img3, name: "Yellow", hash: "3"}
+            {imgPath: cream, name: "Cream", hash: "1"},
+            {imgPath: black, name: "Black", hash: "2"},
+            {imgPath: yellow, name: "Yellow", hash: "3"}
         ],
         profiles: [
-            {imgPath: "", name: "Серебро", hash: "1"},
-            {imgPath: "", name: "Черный матовый RAL9005", hash: "2"},
+            {imgPath: cream, name: "Серебро", hash: "1"},
+            {imgPath: black, name: "Черный матовый RAL9005", hash: "2"},
         ],
         glasses: [
-            {imgPath: "", name: "Cream", hash: "1"},
-            {imgPath: "", name: "Black", hash: "2"}
+            {imgPath: cream, name: "Cream", hash: "1"},
+            {imgPath: black, name: "Black", hash: "2"}
         ],
 
         description: "Some description if needed. It's might be a tooltip. Not required field"
@@ -56,17 +60,17 @@ export const doors: DoorView[] = [
             },
         ],
         colors: [
-            {imgPath: img4, name: "Cream", hash: "1"},
-            {imgPath: img5, name: "Black", hash: "2"},
-            {imgPath: img6, name: "Yellow", hash: "3"}
+            {imgPath: cream, name: "Cream", hash: "1"},
+            {imgPath: black, name: "Black", hash: "2"},
+            {imgPath: yellow, name: "Yellow", hash: "3"}
         ],
         profiles: [
-            {imgPath: "", name: "Серебро", hash: "1"},
-            {imgPath: "", name: "Черный матовый RAL9005", hash: "2"},
+            {imgPath: cream, name: "Серебро", hash: "1"},
+            {imgPath: black, name: "Черный матовый RAL9005", hash: "2"},
         ],
         glasses: [
-            {imgPath: "", name: "Cream", hash: "1"},
-            {imgPath: "", name: "Black", hash: "2"}
+            {imgPath: cream, name: "Cream", hash: "1"},
+            {imgPath: black, name: "Black", hash: "2"}
         ],
     },
     {
@@ -83,13 +87,13 @@ export const doors: DoorView[] = [
             },
         ],
         colors: [
-            {imgPath: img7, name: "Cream", hash: "1"},
-            {imgPath: img8, name: "Black", hash: "2"},
-            {imgPath: img9, name: "Yellow", hash: "3"},
+            {imgPath: cream, name: "Cream", hash: "1"},
+            {imgPath: black, name: "Black", hash: "2"},
+            {imgPath: yellow, name: "Yellow", hash: "3"},
         ],
         profiles: [
-            {imgPath: "", name: "Серебро", hash: "1"},
-            {imgPath: "", name: "Черный матовый RAL9005", hash: "2"},
+            {imgPath: cream, name: "Серебро", hash: "1"},
+            {imgPath: black, name: "Черный матовый RAL9005", hash: "2"},
         ],
     },
     {
@@ -107,13 +111,13 @@ export const doors: DoorView[] = [
             },
         ],
         colors: [
-            {imgPath: img10, name: "Cream", hash: "1"},
-            {imgPath: img11, name: "Black", hash: "2"},
-            {imgPath: img12, name: "Yellow", hash: "3"},
+            {imgPath: cream, name: "Cream", hash: "1"},
+            {imgPath: black, name: "Black", hash: "2"},
+            {imgPath: yellow, name: "Yellow", hash: "3"},
         ],
         profiles: [
-            {imgPath: "", name: "Серебро", hash: "1"},
-            {imgPath: "", name: "Черный матовый RAL9005", hash: "2"},
+            {imgPath: cream, name: "Серебро", hash: "1"},
+            {imgPath: black, name: "Черный матовый RAL9005", hash: "2"},
         ],
     }
 ]
