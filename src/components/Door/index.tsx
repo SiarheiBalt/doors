@@ -15,17 +15,22 @@ import {DoorColor, DoorView} from "../../models/doors";
 
 import {cl} from "../../classes/global";
 
-const Door = () => {
+type Props = {
+    currentDoor: DoorView
+    currentSerial: string | undefined,
+    currentColor: DoorColor
+}
+
+const Door = ({}) => {
     const dispatch = useAppDispatch();
-    const {doors, currentDoor, currentSerial, currentColor} = useAppSelector((state) => state.doors);
+    const {currentModel, currentDoor, currentSerial, currentColor} = useAppSelector((state) => state.doors);
 
     const pathname = usePathname();
 
     useEffect(() => {
-        dispatch(setCurrentDoor());
-
+        if(!currentDoor) dispatch(setCurrentDoor());
         // eslint-disable-next-line
-    }, [])
+    })
 
     useEffect(() => {
         if(currentDoor) {
@@ -34,7 +39,7 @@ const Door = () => {
 
         // eslint-disable-next-line
     }, [currentDoor])
-
+    console.log(currentDoor)
     if(!currentDoor) return null;
 
     console.log(currentColor)

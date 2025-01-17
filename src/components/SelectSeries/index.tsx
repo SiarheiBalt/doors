@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {useAppDispatch} from "../../lib/hooks";
 import {setCurrentSerial} from "../../lib/features/door.slice";
-
+import Link from 'next/link';
 import cs from "classnames";
 import {cl} from "../../classes/global";
 
@@ -31,11 +31,12 @@ const SelectSeries: FC<Props> = ({
         <div className={styles[position].seriesContainer}>
             {series && series.map((serial, i) => {
                 const isSelected = currentSerial === serial;
-                return <div
-                    className={cs(styles[position].serialContainer, isSelected && styles[position].currentSerial)}
-                    key={i}
-                    onClick={() => onHandleClick(serial)}
-                >{serial}</div>
+                return <Link key={i} href={`/catalog/view-door/${serial}`} onClick={() => onHandleClick(serial)}>
+                    <div
+                        className={cs(styles[position].serialContainer, isSelected && styles[position].currentSerial)}
+                        key={i}
+                    >{serial}</div>
+                </Link>
             })}
         </div>
     );

@@ -1,14 +1,16 @@
 import React, {FC} from 'react';
 import {useAppDispatch} from "../../lib/hooks";
 import {setCurrentModel} from "../../lib/features/door.slice";
+import Link from 'next/link';
 import cs from "classnames";
 
 type Props = {
     models: string[],
-    currentModel: undefined | string
+    currentModel: undefined | string,
+    currentSerial: string
 }
 
-const SelectModel: FC<Props> = ({models, currentModel}) => {
+const SelectModel: FC<Props> = ({models, currentModel, currentSerial}) => {
     const dispatch = useAppDispatch();
 
     const onHandleClick = (model: string) => {
@@ -19,9 +21,11 @@ const SelectModel: FC<Props> = ({models, currentModel}) => {
         <div className={styles.container}>
             {models.map((model, i) => {
                 const isSelected = currentModel && currentModel === model;
-                return <div key={i} className={cs(isSelected && styles.currentSerial, styles.modelContainer)} onClick={() => onHandleClick(model)}>
-                    <span>{model}</span>
-                </div>
+                return <Link key={i} href={`${currentSerial}/${model}`} onClick={() => onHandleClick(model)}>
+                    <div className={cs(isSelected && styles.currentSerial, styles.modelContainer)}>
+                        <span>{model}</span>
+                    </div>
+                </Link>
             })}
         </div>
     );

@@ -19,7 +19,7 @@ const ModelsView: FC<Props> = ({doors, currentSerial}) => {
 
            return <div key={index} className="border border-gray-100"
                        style={{height: 523, width: 235}}>
-               <Link href={`door/${door.serial.toLowerCase()}`}>
+               <Link href={`${currentSerial}/${door.model}`}>
                    <div className="pt-8 pb-8 flex justify-center cursor-pointer hover:bg-gray-50">
                        <Image height={280}
                               width={120}
@@ -31,7 +31,7 @@ const ModelsView: FC<Props> = ({doors, currentSerial}) => {
                </Link>
                <div
                    className="flex flex-col items-center justify-center pt-2 border-t border-gray-100">
-                   <span>1.1P</span>
+                   <span>{door.model}</span>
                    <span className={cs(cl.subTitle, "p-2")}>999 руб.</span>
                    <button
                        className={cl.buttons.outline}
