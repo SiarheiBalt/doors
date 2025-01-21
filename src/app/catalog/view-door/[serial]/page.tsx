@@ -23,7 +23,7 @@ const Page = () => {
         <>
             <div className="flex pt-8 mb-20 flex-col md:flex-row">
                 <div className="mr-4">
-                    {currentSerial && <SelectSeries series={series} currentSerial={currentSerial || series[0]} position="left"/>}
+                    {currentSerial && <SelectSeries series={series} currentSerial={currentSerial} position="left"/>}
 
                     <div className="w-80 flex justify-center pt-6 pb-6">
                         <span className={cl.title}>Filters</span>

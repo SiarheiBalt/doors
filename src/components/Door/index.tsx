@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import {useAppDispatch, useAppSelector} from "../../lib/hooks";
+import SelectColor from "../SelectColor/index";
 import {setCurrentDoor, setCurrentColor} from "../../lib/features/door.slice";
 
 import {DoorColor, DoorView} from "../../models/doors";
@@ -23,52 +24,47 @@ type Props = {
 
 const Door = ({}) => {
     const dispatch = useAppDispatch();
-    const {currentModel, currentDoor, currentSerial, currentColor} = useAppSelector((state) => state.doors);
+    const {currentModel, currentDoor, currentSerial, currentDoorColor} = useAppSelector((state) => state.doors);
 
     const pathname = usePathname();
 
     useEffect(() => {
         if(!currentDoor) dispatch(setCurrentDoor());
         // eslint-disable-next-line
-    })
+    }, [])
 
     useEffect(() => {
         if(currentDoor) {
-            dispatch(setCurrentColor(currentDoor.colors[0]));
+            dispatch(
+                setCurrentColor({colorType: "currentDoorColor", color: currentDoor.colors[0]})
+            );
         }
 
         // eslint-disable-next-line
     }, [currentDoor])
-    console.log(currentDoor)
+
+    const onSelectColor = (colorType: string, color: DoorColor) => {
+        dispatch(setCurrentColor({colorType, color}));
+    }
+
+
+
     if(!currentDoor) return null;
 
-    console.log(currentColor)
-
-    const colors = currentDoor.colors.map((color: DoorColor, index: number) => {
-        const rectSizeClass = "h-12 w-26";
-        return <div key={index} className={rectSizeClass + " flex m-1 p-1 hover:outline outline-gray-200"}>
-                <Image
-                    src={color.imgPath}
-                    alt=""
-                    className="cursor-pointer"
-                />
-        </div>
-    })
-
-
-    return (
+    return <>
         <div className="">
                 <div className={cl.title + " pb-10 pt-10"}>
                     {currentSerial}
                 </div>
                 <hr className="pt-10 pb-10"/>
-                <div className="flex">
-                    <div className={"w-24 flex flex-col items-left justify-center"}>
-                        <span className={cl.subTitle}>Цвет</span>
-                        <span className="text-sm">добавить</span>
-                    </div>
-                    {colors}
-                </div>
+
+                <SelectColor colors={currentDoor.colors}
+                             currentColor={currentDoorColor}
+                             colorType="currentDoorColor"
+                             onClick={onSelectColor}
+                             text={"Цвет"}
+                />
+
 
                 {/*<Swiper*/}
                 {/*    modules={[Navigation, Pagination, Scrollbar, A11y]}*/}
@@ -93,7 +89,7 @@ const Door = ({}) => {
                 {/*    })}*/}
                 {/*</Swiper>*/}
         </div>
-    );
+    </>;
 };
 
 export default Door;

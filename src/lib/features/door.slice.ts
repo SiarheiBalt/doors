@@ -8,7 +8,9 @@ export interface DoorState {
     models: string[] | null,
     currentSerial: string | undefined,
     currentModel: string | undefined,
-    currentColor: DoorColor | null,
+    currentDoorColor: DoorColor | null,
+    currentProfileColor: DoorColor | null,
+    currentGlassColor: DoorColor | null,
     doors: DoorView[] | null
 }
 
@@ -19,7 +21,9 @@ export const initialState: DoorState = {
     currentSerial: undefined,
     currentModel: undefined,
     doors: doors,
-    currentColor: null
+    currentDoorColor: null,
+    currentProfileColor: null,
+    currentGlassColor: null
 };
 
 export const doorSlice = createSlice({
@@ -47,8 +51,11 @@ export const doorSlice = createSlice({
         setCurrentModel: (state, action: PayloadAction<string>) => {
             state.currentModel = action.payload;
         },
-        setCurrentColor: (state, action: PayloadAction<DoorColor>) => {
-            state.currentColor = action.payload;
+        setCurrentColor: (
+            state, action: PayloadAction<{ colorType: string, color: DoorColor }>
+        ) => {
+            const {colorType, color} = action.payload;
+            state[colorType] = color;
         }
 
     },
