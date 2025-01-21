@@ -17,7 +17,7 @@ const SelectColor: FC<Props> = (
 
     return <div className="flex">
 
-        <div className={"w-24 flex flex-col items-left justify-center"}>
+        <div className={"w-32 flex flex-col items-left justify-center"}>
             <span className={cl.subTitle}>{text}</span>
             <span className="text-sm text-slate-500">{currentColor?.name || ""}</span>
         </div>

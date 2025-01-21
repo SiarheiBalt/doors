@@ -10,9 +10,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import {useAppDispatch, useAppSelector} from "../../lib/hooks";
 import SelectColor from "../SelectColor/index";
-import {setCurrentDoor, setCurrentColor} from "../../lib/features/door.slice";
+import {setCurrentDoor, setCurrentColor, setColors} from "../../lib/features/door.slice";
 
-import {DoorColor, DoorView} from "../../models/doors";
+import {DoorColor, DoorView, Profile} from "../../models/doors";
 
 import {cl} from "../../classes/global";
 
@@ -24,9 +24,9 @@ type Props = {
 
 const Door = ({}) => {
     const dispatch = useAppDispatch();
-    const {currentModel, currentDoor, currentSerial, currentDoorColor} = useAppSelector((state) => state.doors);
-
-    const pathname = usePathname();
+    const {
+        currentProfileColor, currentDoor, currentSerial, currentDoorColor, currentGlassColor
+    } = useAppSelector((state) => state.doors);
 
     useEffect(() => {
         if(!currentDoor) dispatch(setCurrentDoor());
@@ -35,18 +35,15 @@ const Door = ({}) => {
 
     useEffect(() => {
         if(currentDoor) {
-            dispatch(
-                setCurrentColor({colorType: "currentDoorColor", color: currentDoor.colors[0]})
-            );
+            dispatch(setColors());
         }
 
         // eslint-disable-next-line
     }, [currentDoor])
 
-    const onSelectColor = (colorType: string, color: DoorColor) => {
+    const onColorSelectColor = (colorType: string, color: DoorColor) => {
         dispatch(setCurrentColor({colorType, color}));
     }
-
 
 
     if(!currentDoor) return null;
@@ -57,37 +54,59 @@ const Door = ({}) => {
                     {currentSerial}
                 </div>
                 <hr className="pt-10 pb-10"/>
-
-                <SelectColor colors={currentDoor.colors}
-                             currentColor={currentDoorColor}
-                             colorType="currentDoorColor"
-                             onClick={onSelectColor}
-                             text={"Цвет"}
-                />
-
-
-                {/*<Swiper*/}
-                {/*    modules={[Navigation, Pagination, Scrollbar, A11y]}*/}
-                {/*    spaceBetween={30}*/}
-                {/*    slidesPerView={2}*/}
-                {/*    navigation*/}
-                {/*    pagination={{clickable: true}}*/}
-                {/*    scrollbar={{ draggable: true }}*/}
-                {/*    // onSlideChange={() => console.log('slide change')}*/}
-                {/*    // onSwiper={(swiper) => console.log(swiper)}*/}
-                {/*>*/}
-                {/*    {currentDoor && currentDoor.colors.map((image, index) => {*/}
-                {/*        return <SwiperSlide key={index}>*/}
-                {/*            <div className="flex justify-center p-10">*/}
-                {/*                <Image*/}
-                {/*                    src={image.imgPath}*/}
-                {/*                    alt=""*/}
-                {/*                    width={200}*/}
-                {/*                />*/}
-                {/*            </div>*/}
-                {/*        </SwiperSlide>*/}
-                {/*    })}*/}
-                {/*</Swiper>*/}
+            <div className="flex justify-between">
+                <div>
+                    <Swiper
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={30}
+                        slidesPerView={2}
+                        style={{width: 500}}
+                        navigation
+                        pagination={{clickable: true}}
+                        scrollbar={{draggable: true}}
+                        // onSlideChange={() => console.log('slide change')}
+                        // onSwiper={(swiper) => console.log(swiper)}
+                    >
+                        {currentDoor && currentDoor.colors.map((image, index) => {
+                            return <SwiperSlide key={index}>
+                                <div className="flex justify-center p-10">
+                                    <Image
+                                        src={image.imgPath}
+                                        alt=""
+                                        width={200}
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        })}
+                    </Swiper>
+                </div>
+                <div>
+                    <div className="m-4">
+                        <SelectColor colors={currentDoor.colors}
+                                     currentColor={currentDoorColor}
+                                     colorType="currentDoorColor"
+                                     onClick={onColorSelectColor}
+                                     text={"Цвет"}
+                        />
+                    </div>
+                    <div className="m-4">
+                        {currentDoor.profiles && <SelectColor colors={currentDoor.profiles}
+                                                              currentColor={currentProfileColor}
+                                                              colorType="currentProfileColor"
+                                                              onClick={onColorSelectColor}
+                                                              text={"Профиль"}
+                        />}
+                    </div>
+                    <div className="m-4">
+                        {currentDoor.glasses && <SelectColor colors={currentDoor.glasses}
+                                                             currentColor={currentGlassColor}
+                                                             colorType="currentGlassColor"
+                                                             onClick={onColorSelectColor}
+                                                             text={"Стекло"}
+                        />}
+                    </div>
+                </div>
+            </div>
         </div>
     </>;
 };
