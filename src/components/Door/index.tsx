@@ -11,6 +11,7 @@ import 'swiper/css/scrollbar';
 import {useAppDispatch, useAppSelector} from "../../lib/hooks";
 import SelectColor from "../SelectColor/index";
 import {setCurrentDoor, setCurrentColor, setColors} from "../../lib/features/door.slice";
+import {testDoorImages} from "../../helpers/test-data-v2";
 
 import {DoorColor, DoorView, Profile} from "../../models/doors";
 
@@ -45,16 +46,18 @@ const Door = ({}) => {
         dispatch(setCurrentColor({colorType, color}));
     }
 
-
     if(!currentDoor) return null;
 
+    const doorImages = testDoorImages.find((images) =>
+        images.serial === currentDoor.serial && images.model === currentDoor.model);
+
     return <>
-        <div className="">
+        <div className="mb-8">
                 <div className={cl.title + " pb-10 pt-10"}>
                     {currentSerial}
                 </div>
                 <hr className="pt-10 pb-10"/>
-            <div className="flex justify-between">
+            <div className="flex justify-start">
                 <div>
                     <Swiper
                         modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -67,17 +70,20 @@ const Door = ({}) => {
                         // onSlideChange={() => console.log('slide change')}
                         // onSwiper={(swiper) => console.log(swiper)}
                     >
-                        {currentDoor && currentDoor.colors.map((image, index) => {
-                            return <SwiperSlide key={index}>
-                                <div className="flex justify-center p-10">
-                                    <Image
-                                        src={image.imgPath}
-                                        alt=""
-                                        width={200}
-                                    />
-                                </div>
-                            </SwiperSlide>
-                        })}
+                        {doorImages && Object.entries(doorImages.images)
+                            .map((image, index) => {
+                                const [hash, path] = image;
+
+                                return <SwiperSlide key={index}>
+                                    <div className="flex justify-center p-10">
+                                        <Image
+                                            src={path}
+                                            alt=""
+                                            width={200}
+                                        />
+                                    </div>
+                                </SwiperSlide>
+                            })}
                     </Swiper>
                 </div>
                 <div>

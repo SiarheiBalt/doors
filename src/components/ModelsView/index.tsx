@@ -8,7 +8,7 @@ import {DoorView} from "../../models/doors";
 
 type Props = {
     doors: DoorView[],
-    currentSerial: string
+    currentSerial: string | undefined
 }
 
 const ModelsView: FC<Props> = ({doors, currentSerial}) => {
@@ -17,13 +17,12 @@ const ModelsView: FC<Props> = ({doors, currentSerial}) => {
        {doors && doors.map((door, index) => {
            if (currentSerial && door.serial !== currentSerial) return null;
 
-           return <div key={index} className="border border-gray-100"
-                       style={{height: 523, width: 235}}>
-               <Link href={`${currentSerial}/${door.model}`}>
-                   <div className="pt-8 pb-8 flex justify-center cursor-pointer hover:bg-gray-50">
+           return <div key={index} className="flex flex-col justify-center items-center w-52 pb-6 border border-gray-100">
+               <Link href={`/catalog/view-door/${door.serial}/${door.model}`}>
+                   <div className="pt-8 pb-8 flex justify-center cursor-pointer">
                        <Image height={280}
                               width={120}
-                              src={door.colors[0].imgPath}
+                              src={door.titleImagePath}
                               alt=""
                               style={{width: "auto", height: "auto"}}
                        />
@@ -32,7 +31,7 @@ const ModelsView: FC<Props> = ({doors, currentSerial}) => {
                <div
                    className="flex flex-col items-center justify-center pt-2 border-t border-gray-100">
                    <span>{door.model}</span>
-                   <span className={cs(cl.subTitle, "p-2")}>999 руб.</span>
+                   <span className={cs(cl.subTitle, "p-2")}>990 руб.</span>
                    <button
                        className={cl.buttons.outline}
                        type="button">

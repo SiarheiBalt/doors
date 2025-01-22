@@ -16,6 +16,77 @@ import cream from "/public/door-rect/cream.jpg";
 import black from "/public/door-rect/black.jpg";
 import yellow from "/public/door-rect/yellow.jpg";
 
+export const testDoorImages = [
+    {
+        serial: "GR",
+        model: "1.2",
+        images: {
+            "111": img1,
+            "112": img2,
+            "121": img3,
+            "122": img4,
+
+            "211": img5,
+            "212": img6,
+            "221": img7,
+            "222": img8,
+
+            "311": img9,
+            "312": img10,
+            "321": img11,
+            "322": img12,
+        }
+    },
+    {
+        serial: "GR",
+        model: "1.3",
+        images: {
+            "111": img1,
+            "112": img2,
+            "121": img3,
+            "122": img4,
+
+            "211": img5,
+            "212": img6,
+            "221": img7,
+            "222": img8,
+
+            "311": img9,
+            "312": img10,
+            "321": img11,
+            "322": img12,
+        }
+    },
+    {
+        serial: "PA",
+        model: "1.4",
+        images: {
+            "11": img1,
+            "12": img2,
+
+            "21": img3,
+            "22": img4,
+
+            "31": img5,
+            "32": img6,
+        }
+    },
+    {
+        serial: "PA",
+        model: "1.5",
+        images: {
+            "11": img7,
+            "12": img8,
+
+            "21": img9,
+            "22": img10,
+
+            "31": img11,
+            "32": img12,
+        }
+    },
+]
+
 export const doors: DoorView[] = [
     {
         serial: "GR",
@@ -43,7 +114,7 @@ export const doors: DoorView[] = [
             {imgPath: cream, name: "Cream", hash: "1"},
             {imgPath: black, name: "Black", hash: "2"}
         ],
-
+        titleImagePath: img1,
         description: "Some description if needed. It's might be a tooltip. Not required field"
     },
     {
@@ -72,6 +143,7 @@ export const doors: DoorView[] = [
             {imgPath: cream, name: "Cream", hash: "1"},
             {imgPath: black, name: "Black", hash: "2"}
         ],
+        titleImagePath: img2,
     },
     {
         serial: "PA",
@@ -95,6 +167,7 @@ export const doors: DoorView[] = [
             {imgPath: cream, name: "Серебро", hash: "1"},
             {imgPath: black, name: "Черный матовый RAL9005", hash: "2"},
         ],
+        titleImagePath: img11,
     },
     {
         serial: "PA",
@@ -119,5 +192,6 @@ export const doors: DoorView[] = [
             {imgPath: cream, name: "Серебро", hash: "1"},
             {imgPath: black, name: "Черный матовый RAL9005", hash: "2"},
         ],
+        titleImagePath: img9,
     }
 ]

@@ -39,7 +39,7 @@ export const doorSlice = createSlice({
         setSeries: (state, action: PayloadAction<string[] | null>) => {
             state.series = action.payload;
         },
-        setCurrentSerial: (state, action: PayloadAction<string>) => {
+        setCurrentSerial: (state, action: PayloadAction<string | undefined>) => {
             state.currentSerial = action.payload;
             if(state.doors) {
                 state.models =
