@@ -1,8 +1,7 @@
 "use client"
-import React, {useEffect} from 'react';
-import { usePathname } from 'next/navigation';
+import React, {useEffect, useState, useRef} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, EffectFade } from 'swiper/modules';
 import Image from "next/image";
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,21 +12,40 @@ import SelectColor from "../SelectColor/index";
 import {setCurrentDoor, setCurrentColor, setColors} from "../../lib/features/door.slice";
 import {testDoorImages} from "../../helpers/test-data-v2";
 
-import {DoorColor, DoorView, Profile} from "../../models/doors";
+import {DoorColor} from "../../models/doors";
 
 import {cl} from "../../classes/global";
-
-type Props = {
-    currentDoor: DoorView
-    currentSerial: string | undefined,
-    currentColor: DoorColor
-}
 
 const Door = ({}) => {
     const dispatch = useAppDispatch();
     const {
         currentProfileColor, currentDoor, currentSerial, currentDoorColor, currentGlassColor
     } = useAppSelector((state) => state.doors);
+
+    const [swiperRef, setSwiperRef] = useState(null);
+
+    const doorImages = useRef(testDoorImages.find((images) =>
+        images.serial === currentDoor?.serial && images?.model === currentDoor.model)).current;
+
+
+    useEffect(() => {
+        if(!currentDoorColor) return;
+
+        let path = currentDoorColor.hash;
+        if(currentDoor?.profiles && currentProfileColor) {
+            path += currentProfileColor?.hash;
+        }
+        if(currentDoor?.glasses && currentGlassColor) {
+            path += currentGlassColor.hash;
+        }
+
+        if(path) {
+            const index = Object.keys(doorImages.images).findIndex(hash => hash === path);
+            if(swiperRef) {
+                swiperRef.slideTo(index - 1, 0);
+            }
+        }
+    }, [currentDoorColor, currentGlassColor, currentProfileColor])
 
     useEffect(() => {
         if(!currentDoor) dispatch(setCurrentDoor());
@@ -48,9 +66,6 @@ const Door = ({}) => {
 
     if(!currentDoor) return null;
 
-    const doorImages = testDoorImages.find((images) =>
-        images.serial === currentDoor.serial && images.model === currentDoor.model);
-
     return <>
         <div className="mb-8">
                 <div className={cl.title + " pb-10 pt-10"}>
@@ -60,21 +75,22 @@ const Door = ({}) => {
             <div className="flex justify-start">
                 <div>
                     <Swiper
-                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
                         spaceBetween={30}
-                        slidesPerView={2}
+                        slidesPerView={1}
+                        effect={'fade'}
                         style={{width: 500}}
                         navigation
                         pagination={{clickable: true}}
                         scrollbar={{draggable: true}}
-                        // onSlideChange={() => console.log('slide change')}
-                        // onSwiper={(swiper) => console.log(swiper)}
+                        onSwiper={setSwiperRef}
+                        onSlideChange={() => console.log('slide change')}
                     >
                         {doorImages && Object.entries(doorImages.images)
                             .map((image, index) => {
                                 const [hash, path] = image;
 
-                                return <SwiperSlide key={index}>
+                                return <SwiperSlide key={hash} virtualIndex={index}>
                                     <div className="flex justify-center p-10">
                                         <Image
                                             src={path}

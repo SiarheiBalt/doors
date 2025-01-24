@@ -6,7 +6,7 @@ import {useParams} from "next/navigation";
 import {setCurrentSerial, setCurrentModel} from "../../../../../lib/features/door.slice";
 
 const Model = () => {
-    const {currentSerial, currentModel, currentColor} = useAppSelector((state) => state.doors);
+    const {currentSerial, currentModel} = useAppSelector((state) => state.doors);
     const {serial, model} = useParams();
     const dispatch = useAppDispatch();
 
@@ -17,10 +17,8 @@ const Model = () => {
 
     return (
         <div>
-            <Door currentColor={currentColor}
-                  currentModel={currentModel}
-                  currentSerial={currentSerial}
-            />
+            {(currentModel && currentModel) &&
+            <Door />}
         </div>
     );
 };
