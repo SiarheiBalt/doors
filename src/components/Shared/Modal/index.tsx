@@ -8,12 +8,13 @@ type ModalProps = {
   content: any,
   title?: string | undefined,
   onClose?: () => void | undefined,
+  isCloseOutside: boolean | undefined
 }
 
-const Modal:FC<ModalProps> = ({content, title, onClose}) => {
+const Modal:FC<ModalProps> = ({content, title, onClose, isCloseOutside= true}) => {
   const containerRef = useRef<any>()
 
-  useOnClickOutside(containerRef, MouseEventType.mouseup, () => onClose && onClose())
+  useOnClickOutside(containerRef, MouseEventType.mouseup, () => (onClose && isCloseOutside) && onClose())
 
   return (
     <div className={cl.wrapper}>

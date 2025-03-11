@@ -1,44 +1,49 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import Input from "../../../Shared/Input/index";
 import FileLoader from "../../../FileLoader/index";
 import Button from "../../../Shared/Button/index";
 
 type Props = {
     labelText: string,
-    setNameValue: any,
-    nameValue: string,
-    setColorImageState: any,
-    colorImageState: any,
-    onSubmit: any
+    onSubmit: any,
+    contextName: string
 }
 
 const AddColor: FC<Props> = ({
                                  labelText,
-                                 setNameValue,
-                                 nameValue,
-                                 setColorImageState,
-                                 colorImageState,
-                                 onSubmit
+                                 onSubmit,
+                                 contextName
 }) => {
+    const [text, setText] = useState("");
+    const [imageState, setImageState] = useState("");
+
+    const onHandleSubmit = () => {
+        onSubmit({
+            text,
+            imageState,
+            contextName
+        });
+    }
+
     return (
         <div className="">
             <label className="">{labelText}</label>
-            <Input value={nameValue} setValue={setNameValue}/>
+            <Input value={text} setValue={setText}/>
 
             <div className="w-52 mt-4">
                 <FileLoader
-                    setFileState={setColorImageState}
+                    setFileState={setImageState}
                     label={(onClick: () => void) =>
-                        colorImageState ?
+                        imageState ?
                             <div onClick={onClick} className="cursor-pointer text-orange-400">Заменить картинку</div> :
                             <div onClick={onClick} className="cursor-pointer text-orange-400">Загрузить картинку</div>}
                     onFileLoad={() => {
                     }}
                 />
-                {colorImageState ? <img src={colorImageState.url} className="" alt=""/> : ""}
+                {imageState ? <img src={imageState.url} className="" alt=""/> : ""}
             </div>
-            {(nameValue && colorImageState) && <div className="mt-4">
-                <Button label="Добавить" handleClick={onSubmit} />
+            {(text && imageState) && <div className="mt-4">
+                <Button label="Добавить" handleClick={onHandleSubmit} />
             </div>}
         </div>
     );
