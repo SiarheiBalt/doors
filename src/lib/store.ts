@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import {doorSlice} from "./features/door.slice";
+import {adminSlice} from "./features/admin.slice";
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
-            doors: doorSlice.reducer
+            doors: doorSlice.reducer,
+            admin: adminSlice.reducer
         },
     })
 }
