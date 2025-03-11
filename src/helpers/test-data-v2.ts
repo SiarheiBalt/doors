@@ -172,7 +172,6 @@ export const doors: DoorView[] = [
     {
         serial: "PA",
         model: "1.5",
-        canvasSizes: ["600x2000", "700x2000"],
         completeness: [
             {
                 type: CompletenessType.usual,

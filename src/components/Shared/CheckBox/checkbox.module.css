@@ -1,0 +1,15 @@
+.checkbox {
+    display: flex;
+    outline: 2px solid #C1C1C1;
+    width: 17px;
+    height: 17px;
+    user-select: none;
+    cursor: pointer;
+}
+.checkbox img {
+    position: absolute;
+    margin-top: -1px;
+    margin-left: -1px;
+    width: 19px;
+    height: 19px;
+}

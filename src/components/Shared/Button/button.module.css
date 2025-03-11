@@ -1,0 +1,69 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.fullWidth {
+    width: 100%;
+}
+.primary {
+    background-color: #0091EF;
+    color: #FFFFFF;
+    border: none;
+}
+.primary:hover {
+    background-color: #037ECE;
+}
+.secondaryBlack {
+    background-color: unset;
+    color: #333333;
+    border: 1px solid #DDDDDD;
+}
+.secondaryBlack:hover {
+    color: #037ECE;
+    border: 1px solid #037ECE;
+}
+.secondaryRed {
+    background-color: unset;
+    color: #EF5350;
+    border: 1px solid #EF5350;
+}
+.secondaryRed:hover {
+    color: #DF3C39;
+    border: 1px solid #DF3C39;
+}
+.disabled {
+    background-color: unset;
+    color: #B8B8B8;
+    border: 1px solid #DDDDDD;
+    cursor: initial;
+}
+.disabled:hover {
+    color: #B8B8B8;
+    border: 1px solid #DDDDDD;
+}
+.primary.disabled {
+    background-color: #F0F0F0;
+    border: none;
+}
+.img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    margin-top: -2px;
+}
+.disabled .img {
+    fill: #B8B8B8;
+}
+.container:not(.disabled):hover .img {
+    fill: #037ECE;
+}

@@ -4,6 +4,7 @@ import cs from "classnames";
 import {cl} from "../../classes/global";
 import SignInForm from "../../components/SignInForm/index";
 import FileLoader from "../../components/FileLoader/index";
+import AddDoorForm from "../../components/Forms/AddDoorForm/index";
 
 const Admin = () => {
     const isAuth = true;
@@ -19,13 +20,9 @@ const Admin = () => {
     return (
         <div className={cs(cl.container, "pt-8")}>
             <div className={cl.title}>Admin page</div>
-            <div className={cl.subTitle + " mt-4"}>Add doors</div>
+            <div className={cl.subTitle + " mt-4"}>Добавить дверь</div>
 
-            <FileLoader onFileLoad={onFileLoad}
-                        isSaveActive={false}
-                        handleSaveAs={() => {
-                        }}
-            />
+            <AddDoorForm />
         </div>
     );
 };
