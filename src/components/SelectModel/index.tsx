@@ -7,7 +7,7 @@ import cs from "classnames";
 type Props = {
     models: string[],
     currentModel: undefined | string,
-    currentSerial: string
+    currentSerial: string | undefined
 }
 
 const SelectModel: FC<Props> = ({models, currentModel, currentSerial}) => {

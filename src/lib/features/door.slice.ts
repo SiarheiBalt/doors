@@ -31,6 +31,7 @@ export const doorSlice = createSlice({
     initialState,
     reducers: {
         setCurrentDoor: (state) => {
+            //@ts-ignore
             state.currentDoor = state.doors.find((door) =>
                 door.serial === state.currentSerial &&
                 door.model === state.currentModel
@@ -49,6 +50,7 @@ export const doorSlice = createSlice({
         },
         setCurrentModel: (state, action: PayloadAction<string>) => {
             state.currentModel = action.payload;
+            //@ts-ignore
             state.currentDoor = state.doors.find((door) =>
                 door.serial === state.currentSerial &&
                 door.model === state.currentModel
@@ -58,6 +60,7 @@ export const doorSlice = createSlice({
             state, action: PayloadAction<{ colorType: string, color: DoorColor }>
         ) => {
             const {colorType, color} = action.payload;
+            //@ts-ignore
             state[colorType] = color;
         },
         setColors: (state) => {

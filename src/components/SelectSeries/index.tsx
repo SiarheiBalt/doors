@@ -5,7 +5,7 @@ import Link from 'next/link';
 import cs from "classnames";
 import {cl} from "../../classes/global";
 
-enum Positions {
+export enum Positions {
     top = "top",
     left = "left"
 }

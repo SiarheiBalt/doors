@@ -11,7 +11,9 @@ const Model = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
+        //@ts-ignore
         if(!currentSerial) dispatch(setCurrentSerial(serial));
+        //@ts-ignore
         if(!currentModel) dispatch(setCurrentModel(model));
     }, [serial])
 

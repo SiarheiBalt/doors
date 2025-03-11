@@ -40,8 +40,9 @@ const Door = ({}) => {
         }
 
         if(path) {
-            const index = Object.keys(doorImages.images).findIndex(hash => hash === path);
+            const index = Object.keys(doorImages?.images || {}).findIndex(hash => hash === path);
             if(swiperRef) {
+                //@ts-ignore
                 swiperRef.slideTo(index - 1, 0);
             }
         }
@@ -83,6 +84,7 @@ const Door = ({}) => {
                         navigation
                         pagination={{clickable: true}}
                         scrollbar={{draggable: true}}
+                        /*@ts-ignore*/
                         onSwiper={setSwiperRef}
                         onSlideChange={() => console.log('slide change')}
                     >

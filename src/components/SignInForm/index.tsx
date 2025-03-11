@@ -44,7 +44,9 @@ const SignInForm = () => {
                         </button>
                     </div>
                 </form>
-            } />
+            }
+                   isCloseOutside={false}
+            />
 
         </div>
     );

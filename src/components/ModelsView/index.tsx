@@ -7,7 +7,7 @@ import {cl} from "../../classes/global";
 import {DoorView} from "../../models/doors";
 
 type Props = {
-    doors: DoorView[],
+    doors: DoorView[] | null,
     currentSerial: string | undefined
 }
 

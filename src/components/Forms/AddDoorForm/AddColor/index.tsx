@@ -15,11 +15,11 @@ const AddColor: FC<Props> = ({
                                  contextName
 }) => {
     const [text, setText] = useState("");
-    const [imageState, setImageState] = useState("");
+    const [imageState, setImageState] = useState<any>("");
 
     const onHandleSubmit = () => {
         onSubmit({
-            text,
+            name: text,
             imageState,
             contextName
         });
@@ -37,8 +37,6 @@ const AddColor: FC<Props> = ({
                         imageState ?
                             <div onClick={onClick} className="cursor-pointer text-orange-400">Заменить картинку</div> :
                             <div onClick={onClick} className="cursor-pointer text-orange-400">Загрузить картинку</div>}
-                    onFileLoad={() => {
-                    }}
                 />
                 {imageState ? <img src={imageState.url} className="" alt=""/> : ""}
             </div>

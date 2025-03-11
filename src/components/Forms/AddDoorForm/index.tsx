@@ -3,8 +3,13 @@ import Input from "../../Shared/Input/index";
 import Button from "../../Shared/Button/index";
 import Modal from "../../Shared/Modal/index";
 import AddColor from "./AddColor/index";
+import {useAppSelector, useAppDispatch} from "../../../lib/hooks";
+import {setColor} from "../../../lib/features/admin.slice";
 
 const AddDoorForm = () => {
+    const {} = useAppSelector((state) => state.admin);
+    const dispatch = useAppDispatch();
+
     const [serialValue, setSerialValue] = useState("");
     const [modelValue, setModelValue] = useState("");
 
@@ -13,29 +18,32 @@ const AddDoorForm = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const oneHandleSubmit = (data: any) => {
-        console.log(data);
+        let {imageState} = data;
+        imageState = imageState.url;
+        dispatch(setColor({...data, imageState}));
         setIsModalOpen(false);
     }
 
     const openModal = (contextName: string) => {
 
         const formData = {
-            color: {
+            colors: {
                 title: "Цвет двери",
                 contextName,
                 submit: oneHandleSubmit
             },
-            profile: {
+            profiles: {
                 title: "Цвет профиля",
                 contextName,
                 submit: oneHandleSubmit
             },
-            glass: {
+            glasses: {
                 title: "Цвет стекла",
                 contextName,
                 submit: oneHandleSubmit
             }
         }
+        //@ts-ignore
         const {title, submit, contextName: context} = formData[contextName];
         contextForm.current = <>
             <AddColor labelText={title}
@@ -58,13 +66,13 @@ const AddDoorForm = () => {
             </div>
             <hr className="m-4"/>
             <div className="m-4">
-                <Button label="Добавить цвет двери" handleClick={() => openModal("color")}/>
+                <Button label="Добавить цвет двери" handleClick={() => openModal("colors")}/>
             </div>
             <div className="m-4">
-                <Button label="Добавить цвет профиля" handleClick={() => openModal("profile")}/>
+                <Button label="Добавить цвет профиля" handleClick={() => openModal("profiles")}/>
             </div>
             <div className="m-4">
-                <Button label="Добавить стекло" handleClick={() => openModal("glass")}/>
+                <Button label="Добавить стекло" handleClick={() => openModal("glasses")}/>
             </div>
 
             {isModalOpen &&

@@ -8,7 +8,7 @@ export type DoorView = {
     profiles: Profile[],
     glasses?: Glass[],
     description?: string | undefined,
-    titleImagePath
+    titleImagePath: any
 }
 
 export type Profile = {
