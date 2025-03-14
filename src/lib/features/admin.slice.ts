@@ -1,24 +1,30 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {DoorColor, DoorView, Glass, Profile} from "../../models/doors";
 
+export interface NewDoor {
+    serial: string,
+    model: string,
+    colors: DoorColor[],
+    profiles: Profile[],
+    glasses: Glass[],
+    images: [{hash: string, imageData: any}]
+}
+
 export interface AdminState {
-    newDoor: {
-        serial: string,
-        model: string,
-        colors: DoorColor[] | null,
-        profiles: Profile[] | null,
-        glasses: Glass[] | null
-    }
+    newDoor: NewDoor
+}
+
+export const newDoor = {
+    serial: "",
+    model: "",
+    colors: [],
+    profiles: [],
+    glasses: [],
+    images: []
 }
 
 export const initialState: AdminState = {
-    newDoor: {
-        serial: "",
-        model: "",
-        colors: [],
-        profiles: [],
-        glasses: []
-    }
+    newDoor: newDoor as unknown as NewDoor
 };
 
 export const adminSlice = createSlice({
@@ -36,11 +42,16 @@ export const adminSlice = createSlice({
                 });
             }
         },
+        setImageData: (state, action: PayloadAction<{hash: string, imageData: any}>) => {
+            const {hash, imageData} = action.payload;
+            state.newDoor.images.push({hash, imageData});
+        }
     },
 });
 
 export const {
-    setColor
+    setColor,
+    setImageData
 } = adminSlice.actions;
 
 export const adminState = (state: AdminState) => state;

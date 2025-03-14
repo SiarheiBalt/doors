@@ -5,9 +5,11 @@ import Modal from "../../Shared/Modal/index";
 import AddColor from "./AddColor/index";
 import {useAppSelector, useAppDispatch} from "../../../lib/hooks";
 import {setColor} from "../../../lib/features/admin.slice";
+import AddDoorTable from "./AddDoorTable/index";
 
 const AddDoorForm = () => {
-    const {} = useAppSelector((state) => state.admin);
+    const {newDoor} = useAppSelector((state) => state.admin);
+    const {colors: doorColors} = newDoor;
     const dispatch = useAppDispatch();
 
     const [serialValue, setSerialValue] = useState("");
@@ -64,15 +66,21 @@ const AddDoorForm = () => {
                 <label className="">Модель</label>
                 <Input value={modelValue} setValue={setModelValue}/>
             </div>
-            <hr className="m-4"/>
-            <div className="m-4">
-                <Button label="Добавить цвет двери" handleClick={() => openModal("colors")}/>
-            </div>
-            <div className="m-4">
-                <Button label="Добавить цвет профиля" handleClick={() => openModal("profiles")}/>
-            </div>
-            <div className="m-4">
-                <Button label="Добавить стекло" handleClick={() => openModal("glasses")}/>
+
+            <div className="flex">
+                {(serialValue && modelValue) && <>
+                    <div className="m-4">
+                        <Button label="Добавить цвет двери" handleClick={() => openModal("colors")}/>
+                    </div>
+                    {!!doorColors?.length && <>
+                        <div className="m-4">
+                            <Button label="Добавить цвет профиля" handleClick={() => openModal("profiles")}/>
+                        </div>
+                        <div className="m-4">
+                            <Button label="Добавить стекло" handleClick={() => openModal("glasses")}/>
+                        </div>
+                    </>}
+                </>}
             </div>
 
             {isModalOpen &&
@@ -81,6 +89,7 @@ const AddDoorForm = () => {
                    onClose={() => setIsModalOpen(false)}
                    isCloseOutside={false}
             />}
+            <AddDoorTable newDoor={newDoor}/>
 
         </div>
     );
