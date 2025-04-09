@@ -18,7 +18,7 @@ tr {
 tr:hover{
   background: #FFF7DD;
   font-weight: 700;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 
 .table td {

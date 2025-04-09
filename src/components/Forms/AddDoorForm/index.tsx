@@ -9,7 +9,7 @@ import AddDoorTable from "./AddDoorTable/index";
 
 const AddDoorForm = () => {
     const {newDoor} = useAppSelector((state) => state.admin);
-    const {colors: doorColors} = newDoor;
+    const {colors: doorColors, images: finalDoorImages} = newDoor;
     const dispatch = useAppDispatch();
 
     const [serialValue, setSerialValue] = useState("");
@@ -57,7 +57,7 @@ const AddDoorForm = () => {
     }
 
     return (
-        <div className="">
+        <div className="mb-8">
             <div className="m-4">
                 <label className="">Серия</label>
                 <Input value={serialValue} setValue={setSerialValue}/>
@@ -91,6 +91,9 @@ const AddDoorForm = () => {
             />}
             <AddDoorTable newDoor={newDoor}/>
 
+            {!!finalDoorImages.length && <div className="mt-4">
+                <Button label="Сохранить" handleClick={() => {}} />
+            </div>}
         </div>
     );
 };
