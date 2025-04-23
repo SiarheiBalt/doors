@@ -10,7 +10,8 @@ import 'swiper/css/scrollbar';
 import {useAppDispatch, useAppSelector} from "../../lib/hooks";
 import SelectColor from "../SelectColor/index";
 import {setCurrentDoor, setCurrentColor, setColors} from "../../lib/features/door.slice";
-import {testDoorImages} from "../../helpers/test-data-v2";
+import testDoorImages2 from "../../helpers/door-imajes-data.json";
+import cs from "classnames";
 
 import {DoorColor} from "../../models/doors";
 
@@ -19,31 +20,32 @@ import {cl} from "../../classes/global";
 const Door = ({}) => {
     const dispatch = useAppDispatch();
     const {
-        currentProfileColor, currentDoor, currentSerial, currentDoorColor, currentGlassColor
+        currentProfileColor, currentDoor, currentSerial, currentDoorColor, currentGlassColor, currentModel
     } = useAppSelector((state) => state.doors);
 
     const [swiperRef, setSwiperRef] = useState(null);
 
-    const doorImages = useRef(testDoorImages.find((images) =>
-        images.serial === currentDoor?.serial && images?.model === currentDoor.model)).current;
-
+    // @ts-ignore
+    const doorImages = useRef(testDoorImages2[currentSerial][currentDoor.model]).current;
 
     useEffect(() => {
         if(!currentDoorColor) return;
 
         let path = currentDoorColor.hash;
-        if(currentDoor?.profiles && currentProfileColor) {
-            path += currentProfileColor?.hash;
-        }
-        if(currentDoor?.glasses && currentGlassColor) {
-            path += currentGlassColor.hash;
-        }
 
+        path +=
+            `-${currentDoor?.profiles && currentProfileColor ? currentProfileColor?.hash : "0"}`;
+
+        path +=
+            `-${currentDoor?.glasses && currentGlassColor ? currentGlassColor.hash : "0"}`;
+
+        console.log(path)
         if(path) {
-            const index = Object.keys(doorImages?.images || {}).findIndex(hash => hash === path);
+            const index = Object.keys(doorImages?.images || {}).findIndex(hash => hash == path);
             if(swiperRef) {
+                console.log(index)
                 //@ts-ignore
-                swiperRef.slideTo(index - 1, 0);
+                swiperRef.slideTo(index, 0);
             }
         }
     }, [currentDoorColor, currentGlassColor, currentProfileColor])
@@ -68,8 +70,8 @@ const Door = ({}) => {
     if(!currentDoor) return null;
 
     return <>
-        <div className="mb-8">
-                <div className={cl.title + " pb-10 pt-10"}>
+        <div className="mb-8 flex">
+                <div className={cs(cl.title, "pb-10 pt-10")}>
                     {currentSerial}
                 </div>
                 <hr className="pt-10 pb-10"/>
@@ -95,9 +97,10 @@ const Door = ({}) => {
                                 return <SwiperSlide key={hash} virtualIndex={index}>
                                     <div className="flex justify-center p-10">
                                         <Image
-                                            src={path}
+                                            src={path as string}
                                             alt=""
                                             width={200}
+                                            height={500}
                                         />
                                     </div>
                                 </SwiperSlide>
@@ -105,6 +108,9 @@ const Door = ({}) => {
                     </Swiper>
                 </div>
                 <div>
+                    <div className="m-4 mt-6">
+                        {currentModel}
+                    </div>
                     <div className="m-4">
                         <SelectColor colors={currentDoor.colors}
                                      currentColor={currentDoorColor}

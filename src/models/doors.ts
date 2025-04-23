@@ -5,8 +5,8 @@ export type DoorView = {
     model: string,
     completeness: Completeness[],
     colors: DoorColor[],
-    profiles: Profile[],
-    glasses?: Glass[],
+    profiles: Profile[] | null,
+    glasses?: Glass[] | null,
     description?: string | undefined,
     titleImagePath: any
 }

@@ -24,7 +24,6 @@ const SelectColor: FC<Props> = (
         <div className="flex">
             {
                 colors.map((color: DoorColor, index: number) => {
-
                     const rectSizeClass = "h-12 w-26";
                     const isSelected = color.name === currentColor?.name;
 
@@ -34,6 +33,8 @@ const SelectColor: FC<Props> = (
                     >
                         <Image
                             src={color.imgPath}
+                            width={100}
+                            height={50}
                             alt=""
                             className="cursor-pointer"
                         />

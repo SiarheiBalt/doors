@@ -1,0 +1,20 @@
+{
+  "PA": {
+    "1PA": {
+      "images": {
+        "1-1-0": "/door-images/PA/1PA/result-door-image/1-2.webp",
+        "1-2-0": "/door-images/PA/1PA/result-door-image/1-1.webp",
+        "2-1-0": "/door-images/PA/1PA/result-door-image/3.webp",
+        "2-2-0": "/door-images/PA/1PA/result-door-image/4.webp"
+      }
+    }
+  },
+  "P": {
+    "1.1P": {
+      "images": {
+        "1-0-0": "/door-images/P/1.1P/result-door-image/1.webp",
+        "2-0-0": "/door-images/P/1.1P/result-door-image/2.webp"
+      }
+    }
+  }
+}
