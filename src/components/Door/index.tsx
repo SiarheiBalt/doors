@@ -11,6 +11,7 @@ import {useAppDispatch, useAppSelector} from "../../lib/hooks";
 import SelectColor from "../SelectColor/index";
 import {setCurrentDoor, setCurrentColor, setColors} from "../../lib/features/door.slice";
 import testDoorImages2 from "../../helpers/door-imajes-data.json";
+import Button from "../Shared/Button";
 import cs from "classnames";
 
 import {DoorColor} from "../../models/doors";
@@ -134,6 +135,10 @@ const Door = ({}) => {
                                                              onClick={onColorSelectColor}
                                                              text={"Стекло"}
                         />}
+                    </div>
+                    <div className="m-4 flex">
+                        <span className={cs(cl.subTitle, "mr-4")}>400 p.</span>
+                        <Button label="ДОБАВИТЬ В КОРЗИНУ" handleClick={() => {}}/>
                     </div>
                 </div>
             </div>

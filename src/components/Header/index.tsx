@@ -26,8 +26,7 @@ const Header: FC<Props> = () => {
                             style={{ width: "auto", height: "auto" }}
                             alt="Picture of the author" />
                     </Link>
-                    <Link href="/" className="mr-4 ml-8">Home</Link>
-                    <Link href="/catalog" className="mr-4">Catalog</Link>
+                    <Link href="/catalog" className="ml-6">Каталог</Link>
                 </div>
             </div>
         </header>
