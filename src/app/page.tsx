@@ -91,7 +91,7 @@ export default function Home() {
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                             <div className="text-center">
                                 <div
-                                    className="w-16 h-16 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                                    className="w-16 h-16 mx-auto mb-4 bg-black rounded-full flex items-center justify-center">
                                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor"
                                          viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -104,7 +104,7 @@ export default function Home() {
                             </div>
                             <div className="text-center">
                                 <div
-                                    className="w-16 h-16 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                                    className="w-16 h-16 mx-auto mb-4 bg-black rounded-full flex items-center justify-center">
                                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor"
                                          viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -117,7 +117,7 @@ export default function Home() {
                             </div>
                             <div className="text-center">
                                 <div
-                                    className="w-16 h-16 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                                    className="w-16 h-16 mx-auto mb-4 bg-black rounded-full flex items-center justify-center">
                                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor"
                                          viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -130,7 +130,7 @@ export default function Home() {
                             </div>
                             <div className="text-center">
                                 <div
-                                    className="w-16 h-16 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                                    className="w-16 h-16 mx-auto mb-4 bg-black rounded-full flex items-center justify-center">
                                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor"
                                          viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
