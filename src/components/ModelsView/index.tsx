@@ -13,13 +13,11 @@ type Props = {
 
 const ModelsView: FC<Props> = ({doors, currentSerial}) => {
 
-   return  <div className="flex items-center justify-center flex-wrap gap-4 pt-4">
+   return  <div className="flex items-center justify-center flex-wrap gap-2 pt-4">
        {doors && doors.map((door, index) => {
            if (currentSerial && door.serial !== currentSerial) return null;
 
-           return <div key={index} className="flex flex-col justify-center items-center w-52 pb-6 border border-gray-100
-           p-8 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300
-           ">
+           return <div key={index} className="flex flex-col justify-center items-center w-52 pb-6 p-2 rounded-lg">
                <Link href={`/catalog/view-door/${door.serial}/${door.model}`}>
                    <div className="pt-2 pb-2 flex justify-center cursor-pointer">
                        <Image height={280}
