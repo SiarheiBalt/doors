@@ -2,18 +2,56 @@
   "PA": {
     "1PA": {
       "images": {
-        "1-1-0": "/door-images/PA/1PA/result-door-image/1-2.webp",
-        "1-2-0": "/door-images/PA/1PA/result-door-image/1-1.webp",
-        "2-1-0": "/door-images/PA/1PA/result-door-image/3.webp",
-        "2-2-0": "/door-images/PA/1PA/result-door-image/4.webp"
+        "1-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Вайт_Серебро.png",
+        "1-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Вайт_Черный.png",
+        "1-3-0": "/door-images/PA/1PA/result-door-image/PА-1_Вайт_Белый.png",
+        "2-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Крем_Вайт_Серебро.png",
+        "2-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Крем_Вайт_Черный.png",
+        "2-3-0": "/door-images/PA/1PA/result-door-image/PА-1_Крем_Вайт_Белый.png",
+        "3-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Кремовая_магнолия_Серебро.png",
+        "3-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Кремовая_магнолия_Черный.png",
+        "3-3-0": "/door-images/PA/1PA/result-door-image/PА-1_Кремовая_магнолия_Белый.png",
+        "4-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Сэнд_Серебро.png",
+        "4-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Сэнд_Черный.png",
+        "5-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Лайт_грей_Серебро.png",
+        "5-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Лайт_грей_Черный.png",
+        "5-3-0": "/door-images/PA/1PA/result-door-image/PА-1_Лайт_грей_Белый.png",
+        "6-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Смоки_Серебро.png",
+        "6-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Смоки_Черный.png",
+        "6-3-0": "/door-images/PA/1PA/result-door-image/PА-1_Смоки_Белый.png",
+        "7-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Графит_Серебро.png",
+        "7-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Графит_Черный.png",
+        "7-3-0": "/door-images/PA/1PA/result-door-image/PА-1_Графит_Белый.png",
+        "8-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Блэк_Серебро.png",
+        "8-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Блэк_Черный.png",
+        "8-3-0": "/door-images/PA/1PA/result-door-image/PА-1_Блэк_Белый.png",
+        "9-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Нэви_блу_Серебро.png",
+        "9-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Нэви_блу_Черный.png",
+        "9-3-0": "/door-images/PA/1PA/result-door-image/PА-1_Нэви_блу.png",
+        "10-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Перламутр_белый_Серебро.png",
+        "10-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Перламутр_белый_Черный.png",
+        "11-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Перламутр_бронза_Серебро.png",
+        "11-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Перламутр_бронза_Черный.png",
+        "12-1-0": "/door-images/PA/1PA/result-door-image/PА-1_Перламутр_золото_Серебро.png",
+        "12-2-0": "/door-images/PA/1PA/result-door-image/PА-1_Перламутр_золото_Черный.png"
       }
     }
   },
   "P": {
     "1.1P": {
       "images": {
-        "1-0-0": "/door-images/P/1.1P/result-door-image/1.webp",
-        "2-0-0": "/door-images/P/1.1P/result-door-image/2.webp"
+        "1-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_1.png",
+        "2-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_2.png",
+        "3-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_3.png",
+        "4-0-0": "/door-images/P/1.1P/result-door-image/P_1.1_4.png",
+        "5-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_5.png",
+        "6-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_6.png",
+        "7-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_7.png",
+        "8-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_8.png",
+        "9-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_9.png",
+        "10-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_10.png",
+        "11-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_11.png",
+        "12-0-0": "/door-images/P/1.1P/result-door-image/P-1.1_12.png"
       }
     }
   }
