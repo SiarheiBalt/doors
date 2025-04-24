@@ -15,11 +15,11 @@ export default function Home() {
                                     доступным ценам</p>
                                 <div className="flex space-x-4">
                                     <button
-                                        className="bg-gray-900 text-white px-6 py-3 rounded hover:bg-gray-700 transition-colors">
+                                        className="bg-primary text-white px-6 py-3 rounded hover:bg-secondary transition-colors">
                                         Каталог дверей
                                     </button>
                                     <button
-                                        className="border border-primary text-primary px-6 py-3 rounded hover:bg-gray-900 hover:text-white transition-colors">
+                                        className="border border-primary text-primary px-6 py-3 rounded hover:bg-primary hover:text-white transition-colors">
                                         Бесплатный замер
                                     </button>
                                 </div>

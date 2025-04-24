@@ -7,7 +7,15 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary': '#1a1a1a',
+        'secondary': '#666666',
+      },
+      fontFamily: {
+        'roboto': ['Roboto', 'sans-serif'],
+      }
+    },
   },
   plugins: [],
 }
