@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {DoorColor, DoorView, Glass, Profile} from "../../models/doors";
-import {doors2} from "../../helpers/test-data-v2";
+import doors2 from "../../helpers/door-view-data.json";
 
 export interface DoorState {
     currentDoor: DoorView | null,
@@ -20,7 +20,7 @@ export const initialState: DoorState = {
     models: null,
     currentSerial: undefined,
     currentModel: undefined,
-    doors: doors2,
+    doors: doors2.views,
     currentDoorColor: null,
     currentProfileColor: null,
     currentGlassColor: null
@@ -44,7 +44,7 @@ export const doorSlice = createSlice({
             state.currentSerial = action.payload;
             if(state.doors) {
                 state.models =
-                    doors2.filter((door: DoorView) => door.serial === state.currentSerial).map(door => door.model);
+                    doors2.views.filter((door: DoorView) => door.serial === state.currentSerial).map(door => door.model);
             }
             state.currentModel = undefined;
         },
