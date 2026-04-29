@@ -14,26 +14,15 @@
         }
       ],
       "colors": [
-        {"imgPath": "/door-images/PA/1PA/door-colors/Вайт.jpg", "name": "Вайт", "hash": "1"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Крем Вайт.jpg", "name": "Крем Вайт", "hash": "2"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Кремовая Магнолия.jpg", "name": "Кремовая Магнолия", "hash": "3"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Сэнд.png", "name": "Сэнд", "hash": "4"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Лайт Грей.jpg", "name": "Лайт Грей", "hash": "5"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Смоки.jpg", "name": "Смоки", "hash": "6"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Графит.jpg", "name": "Графит", "hash": "7"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Чёрный.jpg", "name": "Блэк", "hash": "8"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Неви Блу.jpg", "name": "Нэви Блу", "hash": "9"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Перламутр Белый.jpg", "name": "Перламутр Белый", "hash": "10"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Перламутр Бронза.jpg", "name": "Перламутр Бронза", "hash": "11"},
-        {"imgPath": "/door-images/PA/1PA/door-colors/Перламутр Золото.jpg", "name": "Перламутр Золото", "hash": "12"}
+        {"imgPath": "/door-images/PA/1PA/door-colors/1.png", "name": "Белый", "hash": "1"},
+        {"imgPath": "/door-images/PA/1PA/door-colors/2.jpg", "name": "Черный", "hash": "2"}
       ],
       "profiles": [
-        {"imgPath": "/door-images/PA/1PA/profile-colors/Серебро.jpg", "name": "Серебро", "hash": "1"},
-        {"imgPath": "/door-images/PA/1PA/profile-colors/Чёрный матовый.jpg", "name": "Черный матовый RAL9005", "hash": "2"},
-        {"imgPath": "/door-images/PA/1PA/profile-colors/Белый.jpg", "name": "Белый", "hash": "3"}
+        {"imgPath": "/door-images/PA/1PA/profile-colors/2.jpg", "name": "Серебро", "hash": "1"},
+        {"imgPath": "/door-images/PA/1PA/profile-colors/1.jpg", "name": "Черный матовый RAL9005", "hash": "2"}
       ],
       "glasses": null,
-      "titleImagePath": "/door-images/PA/1PA/result-door-image/PА-1_Перламутр_бронза_Черный.png",
+      "titleImagePath": "/door-images/PA/1PA/result-door-image/1-1.webp",
       "description": "Some description if needed. It's might be a tooltip. Not required field"
     },
     {
@@ -50,22 +39,12 @@
         }
       ],
       "colors": [
-        {"imgPath": "/door-images/P/1.1P/door-colors/Вайт.jpg", "name": "Вайт", "hash": "1"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Крем Вайт.jpg", "name": "Крем Вайт", "hash": "2"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Кремовая Магнолия.jpg", "name": "Кремовая Магнолия", "hash": "3"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Сэнд.png", "name": "Сэнд", "hash": "4"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Лайт Грей.jpg", "name": "Лайт Грей", "hash": "5"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Смоки.jpg", "name": "Смоки", "hash": "6"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Графит.jpg", "name": "Графит", "hash": "7"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Чёрный.jpg", "name": "Блэк", "hash": "8"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Неви Блу.jpg", "name": "Нэви Блу", "hash": "9"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Перламутр Белый.jpg", "name": "Перламутр Белый", "hash": "10"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Перламутр Бронза.jpg", "name": "Перламутр Бронза", "hash": "11"},
-        {"imgPath": "/door-images/P/1.1P/door-colors/Перламутр Золото.jpg", "name": "Перламутр Золото", "hash": "12"}
+        {"imgPath": "/door-images/P/1.1P/door-colors/1.png", "name": "Белый", "hash": "1"},
+        {"imgPath": "/door-images/P/1.1P/door-colors/2.jpg", "name": "Черный", "hash": "2"}
       ],
       "profiles": null,
       "glasses": null,
-      "titleImagePath": "/door-images/P/1.1P/result-door-image/P-1.1_Графит.png",
+      "titleImagePath": "/door-images/P/1.1P/result-door-image/1.webp",
       "description": "Some description if needed. It's might be a tooltip. Not required field"
     }
   ]

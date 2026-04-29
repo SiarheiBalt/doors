@@ -20,7 +20,7 @@ export const initialState: DoorState = {
     models: null,
     currentSerial: undefined,
     currentModel: undefined,
-    doors: doors2.views as DoorView[],
+    doors: doors2.views,
     currentDoorColor: null,
     currentProfileColor: null,
     currentGlassColor: null
@@ -43,8 +43,8 @@ export const doorSlice = createSlice({
         setCurrentSerial: (state, action: PayloadAction<string | undefined>) => {
             state.currentSerial = action.payload;
             if(state.doors) {
-                // @ts-ignore
-                state.models = doors2.views.filter((door: DoorView) => door.serial === state.currentSerial).map(door => door.model);
+                state.models =
+                    doors2.views.filter((door: DoorView) => door.serial === state.currentSerial).map(door => door.model);
             }
             state.currentModel = undefined;
         },
