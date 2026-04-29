@@ -14,6 +14,8 @@
 | Слайдер на витрине | **Swiper** |
 | Линт | **ESLint 9** с **eslint-config-next** (flat-config: `eslint.config.mjs`) |
 
+Подробнее про слои состояния (URL, Redux, планируемый TanStack Query): **[state.md](./state.md)**.
+
 Бэкенда и БД в репозитории нет; при развитии планируются **Supabase** и публичная витрина в стиле крупных каталогов.
 
 ## Команды

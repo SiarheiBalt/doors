@@ -54,6 +54,4 @@ export const {
     setImageData
 } = adminSlice.actions;
 
-export const adminState = (state: AdminState) => state;
-
 export default adminSlice.reducer;

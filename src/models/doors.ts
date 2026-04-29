@@ -29,6 +29,12 @@ export type DoorColor = {
     hash: string
 }
 
+/** Поля витринного стора для выбранных оттенков (дверь / профиль / стекло) */
+export type DoorColorFieldKey =
+    | 'currentDoorColor'
+    | 'currentProfileColor'
+    | 'currentGlassColor'
+
 export type Completeness = {
     type: CompletenessType,
     description: string

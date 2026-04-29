@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {DoorColor, DoorView, Glass, Profile} from "../../models/doors";
+import {DoorColor, DoorColorFieldKey, DoorView, Glass, Profile} from "../../models/doors";
 import doors2 from "../../helpers/door-view-data.json";
 
 export interface DoorState {
@@ -31,11 +31,14 @@ export const doorSlice = createSlice({
     initialState,
     reducers: {
         setCurrentDoor: (state) => {
-            //@ts-ignore
+            if (!state.doors) {
+                state.currentDoor = null;
+                return;
+            }
             state.currentDoor = state.doors.find((door) =>
                 door.serial === state.currentSerial &&
                 door.model === state.currentModel
-            ) || null;
+            ) ?? null;
         },
         setSeries: (state, action: PayloadAction<string[] | null>) => {
             state.series = action.payload;
@@ -43,25 +46,28 @@ export const doorSlice = createSlice({
         setCurrentSerial: (state, action: PayloadAction<string | undefined>) => {
             state.currentSerial = action.payload;
             if(state.doors) {
-                // @ts-ignore
-                state.models = doors2.views.filter((door: DoorView) => door.serial === state.currentSerial).map(door => door.model);
+                state.models = (doors2.views as DoorView[]).filter((door) => door.serial === state.currentSerial).map(door => door.model);
             }
             state.currentModel = undefined;
         },
         setCurrentModel: (state, action: PayloadAction<string>) => {
             state.currentModel = action.payload;
-            //@ts-ignore
+            if (!state.doors) {
+                state.currentDoor = null;
+                return;
+            }
             state.currentDoor = state.doors.find((door) =>
                 door.serial === state.currentSerial &&
                 door.model === state.currentModel
-            ) || null;
+            ) ?? null;
         },
         setCurrentColor: (
-            state, action: PayloadAction<{ colorType: string, color: DoorColor }>
+            state, action: PayloadAction<{ colorType: DoorColorFieldKey, color: DoorColor }>
         ) => {
             const {colorType, color} = action.payload;
-            //@ts-ignore
-            state[colorType] = color;
+            if (colorType === 'currentDoorColor') state.currentDoorColor = color;
+            else if (colorType === 'currentProfileColor') state.currentProfileColor = color;
+            else state.currentGlassColor = color;
         },
         setColors: (state) => {
             if(!state.currentDoor) return;
@@ -83,7 +89,5 @@ export const {
     setCurrentColor,
     setColors
 } = doorSlice.actions;
-
-export const doorState = (state: DoorState) => state;
 
 export default doorSlice.reducer;

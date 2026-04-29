@@ -1,13 +1,13 @@
-import React, {FC, useEffect} from 'react';
-import {DoorColor} from "../../models/doors";
+import React, {FC} from 'react';
+import {DoorColor, DoorColorFieldKey} from "../../models/doors";
 import Image from "next/image";
 import {cl} from "../../classes/global";
 
 type Props = {
     colors: DoorColor[],
     currentColor: DoorColor | null,
-    colorType: string,
-    onClick: (colorType: string, color: DoorColor) => void
+    colorType: DoorColorFieldKey,
+    onClick: (colorType: DoorColorFieldKey, color: DoorColor) => void
     text: string
 }
 

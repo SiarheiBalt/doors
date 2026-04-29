@@ -14,7 +14,7 @@ import testDoorImages2 from "../../helpers/door-imajes-data.json";
 import Button from "../Shared/Button";
 import cs from "classnames";
 
-import {DoorColor} from "../../models/doors";
+import {DoorColor, DoorColorFieldKey} from "../../models/doors";
 
 import {cl} from "../../classes/global";
 
@@ -43,31 +43,26 @@ const Door = ({}) => {
         path +=
             `-${currentDoor?.glasses && currentGlassColor ? currentGlassColor.hash : "0"}`;
 
-        console.log(path)
         if(path) {
-            const index = Object.keys(doorImages?.images || {}).findIndex(hash => hash == path);
+            const index = Object.keys(doorImages?.images || {}).findIndex(hash => hash === path);
             if(swiperRef) {
-                console.log(index)
-                //@ts-ignore
+                //@ts-expect-error Swiper instance from onSwiper
                 swiperRef.slideTo(index, 0);
             }
         }
-    }, [currentDoorColor, currentGlassColor, currentProfileColor])
+    }, [currentDoorColor, currentGlassColor, currentProfileColor, currentDoor, doorImages, swiperRef])
 
     useEffect(() => {
-        if(!currentDoor) dispatch(setCurrentDoor());
-        // eslint-disable-next-line
-    }, [])
+        dispatch(setCurrentDoor());
+    }, [currentSerial, currentModel, dispatch])
 
     useEffect(() => {
         if(currentDoor) {
             dispatch(setColors());
         }
+    }, [currentDoor, dispatch])
 
-        // eslint-disable-next-line
-    }, [currentDoor])
-
-    const onColorSelectColor = (colorType: string, color: DoorColor) => {
+    const onColorSelectColor = (colorType: DoorColorFieldKey, color: DoorColor) => {
         dispatch(setCurrentColor({colorType, color}));
     }
 
@@ -92,7 +87,7 @@ const Door = ({}) => {
                         scrollbar={{draggable: true}}
                         /*@ts-ignore*/
                         onSwiper={setSwiperRef}
-                        onSlideChange={() => console.log('slide change')}
+                        onSlideChange={() => {}}
                     >
                         {doorImages && Object.entries(doorImages.images)
                             .map((image, index) => {
