@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import Input from "../../Shared/Input/index";
 import Button from "../../Shared/Button/index";
 import Modal from "../../Shared/Modal/index";
@@ -15,7 +15,7 @@ const AddDoorForm = () => {
     const [serialValue, setSerialValue] = useState("");
     const [modelValue, setModelValue] = useState("");
 
-    const contextForm = useRef<any>(null);
+    const [modalContent, setModalContent] = useState<React.ReactNode>(null);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,12 +47,12 @@ const AddDoorForm = () => {
         }
         //@ts-ignore
         const {title, submit, contextName: context} = formData[contextName];
-        contextForm.current = <>
+        setModalContent(
             <AddColor labelText={title}
                       contextName={context}
                       onSubmit={submit}
-            />
-        </>;
+            />,
+        );
         setIsModalOpen(true);
     }
 
@@ -84,9 +84,12 @@ const AddDoorForm = () => {
             </div>
 
             {isModalOpen &&
-            <Modal content={contextForm.current || null}
+            <Modal content={modalContent}
                    title="Форма"
-                   onClose={() => setIsModalOpen(false)}
+                   onClose={() => {
+                       setIsModalOpen(false);
+                       setModalContent(null);
+                   }}
                    isCloseOutside={false}
             />}
             <AddDoorTable newDoor={newDoor}/>

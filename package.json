@@ -3,30 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "rimraf .next && next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.2.7",
+    "@reduxjs/toolkit": "^2.11.0",
     "classnames": "^2.5.1",
-    "next": "^15.3.0",
-    "rc-table": "^7.50.4",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-redux": "^9.1.2",
-    "swiper": "^11.1.14"
+    "next": "^16.2.4",
+    "rc-table": "^7.55.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-redux": "^9.2.0",
+    "swiper": "^12.0.3"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8",
-    "eslint-config-next": "13.5.4",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.3",
-    "typescript": "^5"
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "autoprefixer": "^10.4.23",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "16.2.4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   }
 }

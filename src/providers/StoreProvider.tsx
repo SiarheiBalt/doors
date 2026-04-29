@@ -1,7 +1,7 @@
 'use client'
-import {useRef} from 'react';
+import {useMemo} from 'react';
 import {Provider} from 'react-redux';
-import {makeStore, AppStore} from '../lib/store';
+import {makeStore} from '../lib/store';
 import {setCurrentDoor} from "../lib/features/door.slice";
 
 export default function StoreProvider({
@@ -9,13 +9,12 @@ export default function StoreProvider({
                                       }: {
     children: React.ReactNode
 }) {
-    const storeRef = useRef<AppStore>()
-    if (!storeRef.current) {
-        // Create the store instance the first time this renders
-        storeRef.current = makeStore();
-        //@ts-ignore
-        storeRef.current && storeRef.current?.dispatch(setCurrentDoor(null));
-    }
+    const store = useMemo(() => {
+        const s = makeStore();
+        // @ts-expect-error initial door state
+        s.dispatch(setCurrentDoor(null));
+        return s;
+    }, []);
 
-    return <Provider store={storeRef.current}>{children}</Provider>
+    return <Provider store={store}>{children}</Provider>
 }

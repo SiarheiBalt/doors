@@ -12,7 +12,7 @@ type ModalProps = {
 }
 
 const Modal:FC<ModalProps> = ({content, title, onClose, isCloseOutside= true}) => {
-  const containerRef = useRef<any>()
+  const containerRef = useRef<HTMLDivElement | null>(null)
 
   useOnClickOutside(containerRef, MouseEventType.mouseup, () => (onClose && isCloseOutside) && onClose())
 

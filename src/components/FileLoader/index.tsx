@@ -1,4 +1,4 @@
-import React, {FC, ReactElement, useRef} from 'react';
+import React, {FC, ReactElement, useCallback, useRef} from 'react';
 
 import cl from './FileLoader.module.css';
 
@@ -58,11 +58,14 @@ const FileLoader: FC<Props> = ({label, setFileState}) => {
             }
         }
     }
-    const onOpenFile = () => fileInputRef.current && fileInputRef.current.click();
+    const onOpenFile = useCallback(() => {
+        fileInputRef.current?.click();
+    }, []);
 
     return (
         <>
 
+            {/* eslint-disable-next-line react-hooks/refs -- opener is only invoked from label's user handler */}
             {label(onOpenFile)}
             <input
                 ref={fileInputRef}

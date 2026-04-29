@@ -1,5 +1,5 @@
 "use client"
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, EffectFade } from 'swiper/modules';
 import Image from "next/image";
@@ -26,8 +26,11 @@ const Door = ({}) => {
 
     const [swiperRef, setSwiperRef] = useState(null);
 
-    // @ts-ignore
-    const doorImages = useRef(testDoorImages2[currentSerial][currentDoor.model]).current;
+    const doorImages = useMemo(() => {
+        if (!currentDoor) return null;
+        // @ts-expect-error JSON map lookup
+        return testDoorImages2[currentSerial][currentDoor.model];
+    }, [currentSerial, currentDoor]);
 
     useEffect(() => {
         if(!currentDoorColor) return;
