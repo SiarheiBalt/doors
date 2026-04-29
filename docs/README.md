@@ -6,7 +6,7 @@
 
 | Слой | Технология |
 |------|------------|
-| Фреймворк | **Next.js** (App Router) |
+| Фреймворк | **Next.js** (App Router), **статический экспорт** (`output: 'export'`) |
 | UI | **React** + **TypeScript** |
 | Стили | **Tailwind CSS**, CSS-модули |
 | Состояние | **Redux Toolkit** + **react-redux** |
@@ -14,13 +14,20 @@
 | Слайдер на витрине | **Swiper** |
 | Линт | **ESLint 9** с **eslint-config-next** (flat-config: `eslint.config.mjs`) |
 
-Бэкенда и БД в репозитории нет; при развитии планировались **Supabase** и публичная витрина в стиле крупных каталогов.
+Бэкенда и БД в репозитории нет; при развитии планируются **Supabase** и публичная витрина в стиле крупных каталогов.
 
 ## Команды
 
 - `npm run dev` — режим разработки  
-- `npm run build` — production-сборка  
-- `npm run start` — запуск после сборки  
+- `npm run build` — production-сборка; результат — статические файлы в каталоге **`out/`** (без Node-сервера Next)  
+- `npm run start` — локальный просмотр уже собранного сайта (**раздача папки `out/`** через [`serve`](https://github.com/vercel/serve))  
 - `npm run lint` — проверка ESLint  
+
+Для деплоя на статический хостинг загружайте содержимое **`out/`** (например Cloudflare Pages, Netlify, S3).
+
+## Статическая сборка
+
+- Динамические маршруты каталога **`/catalog/view-door/[serial]`** и **`.../[model]`** пререндерятся при сборке; списки URL формируются из `src/helpers/door-view-data.json` (модуль `src/lib/catalog-static-params.ts`).
+- Для **`next/image`** включён режим **`unoptimized`** — это требование статического экспорта при отключённом сервере оптимизации изображений.
 
 Корень репозитория — это корень приложения Next.js (здесь же `package.json`). В `next.config.js` задан `turbopack.root: __dirname`, чтобы Turbopack не воспринимал родительский каталог как корень, если там лежит свой `package-lock.json`.
