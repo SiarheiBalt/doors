@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import {cl} from "../classes/global";
 
 export default function Home() {
@@ -24,11 +26,15 @@ export default function Home() {
                                     </button>
                                 </div>
                             </div>
-                            <div className="relative">
-                                <div className="bg-gray-200 h-96 rounded-lg"></div>
-                                <div className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded">
-                                    Скидка -20%
-                                </div>
+                            <div className="relative h-96 w-full overflow-hidden rounded-lg">
+                                <Image
+                                    src="/profil-doors-grodno-hero.webp"
+                                    alt="Межкомнатные двери Profil Doors — салон в Гродно"
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    priority
+                                />
                             </div>
                         </div>
                     </div>
