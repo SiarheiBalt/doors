@@ -5,7 +5,7 @@ import Image from 'next/image';
 import icon from '../../../public/logo.png';
 import {cl} from "../../classes/global";
 import { usePathname } from 'next/navigation'
-import {paths} from "../../constants";
+import { contact, paths } from "../../constants";
 
 type Props = {}
 
@@ -42,7 +42,7 @@ const Header: FC<Props> = () => {
 
                     {/* Contact Info */}
                     <div className="hidden md:flex items-center space-x-4">
-                        <a href="tel:+74999385111" className="text-primary font-medium">+375 44 7794815</a>
+                        <a href={contact.phoneHref} className="text-primary font-medium">{contact.phoneNumber}</a>
                         <button
                             className="bg-gray-900 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors">
                             Заказать звонок

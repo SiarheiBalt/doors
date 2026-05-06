@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import {cl} from "../classes/global";
+import { contact, showroom } from "../constants";
 
 export default function Home() {
 
@@ -183,6 +184,17 @@ export default function Home() {
                     </div>
                 </section>
 
+                <section className="w-full" aria-label="Карта проезда к салону">
+                    <iframe
+                        title={`Карта — ${showroom.venueName}, ${showroom.addressLine}`}
+                        src={showroom.mapEmbedUrl}
+                        className="block h-[min(70vh,520px)] min-h-[280px] w-full border-0"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        allowFullScreen
+                    />
+                </section>
+
                 {/* Footer */}
                 <footer className="bg-gray-900 text-white py-16">
                     <div className="container mx-auto px-4">
@@ -223,7 +235,7 @@ export default function Home() {
                             </div>
                             <div>
                                 <h3 className="text-lg font-bold mb-4">Контакты</h3>
-                                <a href="tel:+74999385111" className="text-xl font-bold block mb-4">+7 499 93 85 111</a>
+                                <a href={contact.phoneHref} className="text-xl font-bold block mb-4">{contact.phoneNumber}</a>
                                 <button
                                     className="bg-white text-black px-6 py-3 rounded hover:bg-gray-200 transition-colors mb-4">
                                     Заказать звонок
@@ -232,7 +244,7 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                            <p>© 2025 Profil Doors. Все права защищены.</p>
+                            <p>© 2026 Profil Doors. Все права защищены.</p>
                         </div>
                     </div>
                 </footer>
