@@ -22,8 +22,14 @@ module.exports = {
         },
       },
       fontFamily: {
-        'roboto': ['Roboto', 'sans-serif'],
-      }
+        sans: [
+          'var(--font-manrope)',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif',
+        ],
+        roboto: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],
