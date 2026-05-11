@@ -8,3 +8,33 @@ body, html {
 
     box-sizing: border-box;
 }
+
+@layer components {
+    .home-container {
+        @apply mx-auto max-w-6xl px-4;
+    }
+
+    .home-section {
+        @apply py-16 md:py-24;
+    }
+
+    .home-section-kicker {
+        @apply text-center text-xs font-semibold uppercase tracking-[0.22em] text-slate-400;
+    }
+
+    .home-section-heading {
+        @apply mt-3 text-center text-2xl font-bold tracking-tight text-white md:text-3xl lg:text-4xl;
+    }
+
+    .home-btn-accent {
+        @apply inline-flex items-center justify-center rounded-md border border-transparent bg-accent px-6 py-3 text-sm font-semibold text-stone-900 transition-colors hover:bg-accent-hover;
+    }
+
+    .home-btn-outline {
+        @apply inline-flex items-center justify-center rounded-md border border-white/35 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/5;
+    }
+
+    .home-card-dark {
+        @apply rounded-xl border border-white/10 bg-surface-card/90 backdrop-blur-sm;
+    }
+}

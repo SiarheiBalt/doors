@@ -11,6 +11,15 @@ module.exports = {
       colors: {
         'primary': '#1a1a1a',
         'secondary': '#666666',
+        surface: {
+          DEFAULT: '#0c0e12',
+          muted: '#12161d',
+          card: '#161c26',
+        },
+        accent: {
+          DEFAULT: '#c4a574',
+          hover: '#b08f5a',
+        },
       },
       fontFamily: {
         'roboto': ['Roboto', 'sans-serif'],

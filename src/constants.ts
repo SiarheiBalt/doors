@@ -4,11 +4,22 @@ export const paths = {
 
 const rawPhoneNumber = "+375 29 7854829";
 const normalizedPhoneNumber = rawPhoneNumber.replace(/[^\d+]/g, "");
+const waDigits = normalizedPhoneNumber.replace(/\D/g, "");
 
 export const contact = {
     phoneNumber: rawPhoneNumber,
     phoneHref: `tel:${normalizedPhoneNumber}`,
 };
+
+/** Режим работы салона (для шапки и подвала). */
+export const showroomHours = "ежедневно 10:00 – 20:00";
+
+/** Соцсети — подставьте реальные URL при появлении аккаунтов. */
+export const social = {
+    telegram: "https://t.me/",
+    whatsapp: `https://wa.me/${waDigits}`,
+    instagram: "https://www.instagram.com/",
+} as const;
 
 const showroomAddressLine = "г. Гродно, улица Держинского, 40";
 
