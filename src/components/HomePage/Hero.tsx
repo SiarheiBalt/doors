@@ -18,18 +18,18 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-surface" />
       </div>
 
-      <div className="relative z-10 flex min-h-[min(100vh,900px)] flex-col justify-center px-4 pb-16 pt-28 home-container">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+      <div className="relative z-10 flex min-h-[min(100vh,900px)] flex-col justify-center px-4 pt-28 home-container">
+        <p className="text-left text-xs font-semibold uppercase tracking-[0.25em] text-accent max-w-xs break-normal">
           {hero.kicker}
         </p>
-        <h1 className="mx-auto mt-4 max-w-4xl text-center text-3xl font-bold leading-tight text-white md:text-5xl md:leading-tight">
+        <h1 className="mt-4 max-w-4xl text-3xl font-bold text-white md:text-5xl max-w-xs leading-none">
           {hero.title}
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-base text-slate-200 md:text-lg">
+        <p className="mt-6 max-w-2xl text-base text-slate-200 md:text-lg max-w-xs">
           {hero.subtitle}
         </p>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <Link href="/catalog" className="home-btn-accent min-w-[200px]">
             {hero.ctaCatalog}
           </Link>
@@ -38,8 +38,21 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="mt-8 flex justify-center">
-          <a
+        <div>
+          <div className="mt-16 flex gap-2 flex-wrap">
+            {hero.trust.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-lg border-white/10 p-2 w-fit"
+              >
+                <p className="text-sm font-semibold text-white">{item.title}</p>
+                <p className="mt-2 text-xs leading-relaxed text-slate-400">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+          {/* <a
             href="#"
             className="inline-flex items-center gap-2 text-sm font-medium text-white/90 underline-offset-4 transition hover:text-white hover:underline"
           >
@@ -54,21 +67,7 @@ export default function Hero() {
               </svg>
             </span>
             {hero.video}
-          </a>
-        </div>
-
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {hero.trust.map((item) => (
-            <div
-              key={item.title}
-              className="home-card-dark rounded-lg border-white/10 p-5 text-center"
-            >
-              <p className="text-sm font-semibold text-white">{item.title}</p>
-              <p className="mt-2 text-xs leading-relaxed text-slate-400">
-                {item.desc}
-              </p>
-            </div>
-          ))}
+          </a> */}
         </div>
       </div>
     </section>
