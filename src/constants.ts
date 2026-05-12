@@ -2,7 +2,7 @@ export const paths = {
     admin: "admin"
 }
 
-const rawPhoneNumber = "+375 29 7854829";
+const rawPhoneNumber = "+375 44 505 40 40";
 const normalizedPhoneNumber = rawPhoneNumber.replace(/[^\d+]/g, "");
 const waDigits = normalizedPhoneNumber.replace(/\D/g, "");
 
@@ -16,9 +16,9 @@ export const showroomHours = "ежедневно 10:00 – 20:00";
 
 /** Соцсети — подставьте реальные URL при появлении аккаунтов. */
 export const social = {
-    telegram: "https://t.me/",
+    telegram: `https://t.me/${waDigits}`,
     whatsapp: `https://wa.me/${waDigits}`,
-    instagram: "https://www.instagram.com/",
+    instagram: "https://www.instagram.com/profildoors_grodno",
 } as const;
 
 const showroomAddressLine = "г. Гродно, улица Держинского, 40";
