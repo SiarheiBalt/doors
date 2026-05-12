@@ -1,4 +1,5 @@
 import { contact, showroomHours, social } from "../../../constants";
+import Image from "next/image";
 
 function IconPhone(props: { className?: string }) {
   return (
@@ -42,7 +43,7 @@ function IconInstagram(props: { className?: string }) {
 }
 
 const socialBtnClass =
-  "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:border-accent hover:text-accent";
+  "inline-flex shrink-0 rounded-full transition-[filter] duration-200 ease-out brightness-75 hover:brightness-90";
 
 /** Телефон, режим работы и иконки соцсетей — единый блок для CTA и подобных секций. */
 export default function ContactSocialRow() {
@@ -67,7 +68,7 @@ export default function ContactSocialRow() {
           className={socialBtnClass}
           aria-label="Telegram"
         >
-          <IconTelegram className="h-[18px] w-[18px]" />
+          <Image src="images\social\telegram.svg" alt="Instagram" width={44} height={44} />
         </a>
         <a
           href={social.whatsapp}
@@ -76,7 +77,7 @@ export default function ContactSocialRow() {
           className={socialBtnClass}
           aria-label="WhatsApp"
         >
-          <IconWhatsApp className="h-[18px] w-[18px]" />
+          <Image src="images\social\whatsapp.svg" alt="Instagram" width={44} height={44} />
         </a>
         <a
           href={social.instagram}
@@ -85,7 +86,7 @@ export default function ContactSocialRow() {
           className={socialBtnClass}
           aria-label="Instagram"
         >
-          <IconInstagram className="h-[18px] w-[18px]" />
+          <Image src="images\social\instagram.svg" alt="Instagram" width={44} height={44} />
         </a>
       </div>
     </div>
