@@ -21,17 +21,64 @@ export const social = {
     instagram: "https://www.instagram.com/profildoors_grodno",
 } as const;
 
-const showroomAddressLine = "г. Гродно, улица Держинского, 40";
+/** Построить URL встраивания Google Maps (без API-ключа). */
+function mapEmbedUrl(mapQuery: string) {
+    return `https://www.google.com/maps?q=${encodeURIComponent(
+        mapQuery,
+    )}&output=embed&hl=ru&z=17`;
+}
 
-/** Точка на карте и в интерфейсе — салон Profil Doors. */
-const showroomMapQuery =
-    `Profil Doors, магазин дверей, ${showroomAddressLine}`;
+/** Ссылка «открыть в Google Картах». */
+function mapOpenUrl(mapQuery: string) {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        mapQuery,
+    )}`;
+}
 
-/** Салон на карте (интерактивное встраивание Google Maps, без API-ключа). */
-export const showroom = {
-    venueName: "Profil Doors",
-    addressLine: showroomAddressLine,
-    mapEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent(
-        showroomMapQuery,
-    )}&output=embed&hl=ru&z=17`,
+export type ShowroomLocationId = "premium" | "orange";
+
+export type ShowroomLocation = {
+    id: ShowroomLocationId;
+    badge: string;
+    title: string;
+    description: string;
+    addressLine: string;
+    mapQuery: string;
+    mapEmbedUrl: string;
+    mapOpenUrl: string;
+};
+
+const premiumAddress = "г. Гродно, ул. Дзержинского, 40";
+const orangeAddress = "г. Гродно, ул. Магистральная, 8";
+ 
+const premiumMapQuery = `Profil Doors PREMIUM, магазин дверей, ${premiumAddress}`;
+const orangeMapQuery = `Profil Doors ORANGE, магазин дверей, ${orangeAddress}`;
+
+/** Два салона: PREMIUM и ORANGE (см. блок «Коллекции» на главной). */
+export const showroomLocations: Record<
+    ShowroomLocationId,
+    ShowroomLocation
+> = {
+    premium: {
+        id: "premium",
+        badge: "PREMIUM",
+        title: "Салон PREMIUM",
+        description:
+            "Архитектурные решения для премиального интерьера: скрытые двери, серия AT, перегородки.",
+        addressLine: premiumAddress,
+        mapQuery: premiumMapQuery,
+        mapEmbedUrl: mapEmbedUrl(premiumMapQuery),
+        mapOpenUrl: mapOpenUrl(premiumMapQuery),
+    },
+    orange: {
+        id: "orange",
+        badge: "ORANGE",
+        title: "Салон ORANGE",
+        description:
+            "Современные двери для уютного дома: актуальный дизайн и выгодное соотношение цена — качество.",
+        addressLine: orangeAddress,
+        mapQuery: orangeMapQuery,
+        mapEmbedUrl: mapEmbedUrl(orangeMapQuery),
+        mapOpenUrl: mapOpenUrl(orangeMapQuery),
+    },
 } as const;

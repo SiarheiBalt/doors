@@ -1,27 +1,50 @@
-import { showroom } from "../../constants";
+import Link from "next/link";
 
-export default function HomeMap() {
+import { contactsMapUi } from "../../content/contacts";
+import { showroomHours } from "../../constants";
+import type { ShowroomLocation } from "../../constants";
+
+type Props = {
+  location: ShowroomLocation;
+};
+
+/** Карточка с адресом салона и встроенной картой — для страницы контактов и при необходимости с главной. */
+export default function HomeMap({ location }: Props) {
   return (
-    <section id="contacts" className="scroll-mt-24 border-t border-white/10 bg-surface-muted py-12">
-      <div className="home-container">
-        <p className="home-section-kicker">Контакты</p>
-        <h2 className="home-section-heading">Как нас найти</h2>
-        <p className="mx-auto mt-4 max-w-xl text-center text-sm text-slate-400">
-          {showroom.venueName}, {showroom.addressLine}
-        </p>
-      </div>
-      <div className="mx-auto mt-10 max-w-6xl px-4">
-        <div className="home-card-dark overflow-hidden rounded-xl">
-          <iframe
-            title={`Карта — ${showroom.venueName}, ${showroom.addressLine}`}
-            src={showroom.mapEmbedUrl}
-            className="block h-[min(70vh,480px)] min-h-[280px] w-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
+    <article className="home-card-dark flex h-full flex-col overflow-hidden bg-surface-card/80 shadow-[0_24px_48px_-28px_rgba(0,0,0,0.75)]">
+      <div className="px-5 py-5 md:px-6 md:py-6">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="inline-flex rounded-md border border-accent/35 bg-accent/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-accent">
+            {location.badge}
+          </span>
+          <span className="text-xs text-slate-500">{showroomHours}</span>
         </div>
+        <h2 className="mt-4 text-xl font-bold tracking-tight text-white md:text-2xl">
+          {location.title}
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-slate-400">
+          {location.description}
+        </p>
+        <p className="mt-4 text-sm font-medium text-slate-200">{location.addressLine}</p>
+        <Link
+          href={location.mapOpenUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-flex text-xs font-semibold text-accent underline-offset-4 transition hover:text-accent-hover hover:underline"
+        >
+          {contactsMapUi.openInGoogleMaps}
+        </Link>
       </div>
-    </section>
+      <div className="relative flex-1 bg-black/40">
+        <iframe
+          title={`Карта — ${location.title}, ${location.addressLine}`}
+          src={location.mapEmbedUrl}
+          className="block h-[min(52vh,400px)] min-h-[240px] w-full border-0 md:h-[min(48vh,380px)]"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
+      </div>
+    </article>
   );
 }

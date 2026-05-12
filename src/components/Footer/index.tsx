@@ -24,7 +24,7 @@ const footerLinkGroups = [
     links: [
       { label: "Каталог", href: "/catalog" },
       { label: "Портфолио", href: "/#portfolio" },
-      { label: "Контакты", href: "/#contacts" },
+      { label: "Контакты", href: "/contacts" },
     ],
   },
   {

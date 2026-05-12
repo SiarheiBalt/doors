@@ -15,7 +15,7 @@ const nav = [
   { label: "Портфолио", href: "/#portfolio" },
   { label: "О компании", href: "/#about" },
   { label: "Услуги", href: "/#services" },
-  { label: "Контакты", href: "/#contacts" },
+  { label: "Контакты", href: "/contacts" },
 ] as const;
 
 type Props = object;

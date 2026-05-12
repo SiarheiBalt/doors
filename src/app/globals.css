@@ -35,6 +35,6 @@ body, html {
     }
 
     .home-card-dark {
-        @apply rounded-xl border border-white/10 bg-surface-card/90 backdrop-blur-sm;
+        @apply border border-white/10 bg-surface-card/90 backdrop-blur-sm;
     }
 }

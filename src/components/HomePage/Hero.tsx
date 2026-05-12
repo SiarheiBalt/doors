@@ -33,9 +33,9 @@ export default function Hero() {
           <Link href="/catalog" className="home-btn-accent min-w-[200px]">
             {hero.ctaCatalog}
           </Link>
-          <a href="#contacts" className="home-btn-outline min-w-[200px]">
+          <Link href="/contacts" className="home-btn-outline min-w-[200px]">
             {hero.ctaSalon}
-          </a>
+          </Link>
         </div>
 
         <div>
