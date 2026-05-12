@@ -48,9 +48,9 @@ export type ShowroomLocation = {
     mapOpenUrl: string;
 };
 
-const premiumAddress = "г. Гродно, ул. Дзержинского, 40";
-const orangeAddress = "г. Гродно, ул. Магистральная, 8";
- 
+const premiumAddress = "г. Гродно, ул. Магистральная, 8";
+const orangeAddress = "г. Гродно, ул. Дзержинского, 40";
+
 const premiumMapQuery = `Profil Doors PREMIUM, магазин дверей, ${premiumAddress}`;
 const orangeMapQuery = `Profil Doors ORANGE, магазин дверей, ${orangeAddress}`;
 
