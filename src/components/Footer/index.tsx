@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation";
 import cs from "classnames";
 
 import icon from "../../../public/logo.png";
-import { contact, paths, showroomHours } from "../../constants";
+import { paths, showroomHours } from "../../constants";
+import ContactSocialRow from "../Shared/ContactSocialRow";
 
 const footerLinkGroups = [
   {
@@ -64,13 +65,10 @@ const Footer: FC = () => {
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
               Официальный салон Profil Doors в Гродно. Подбор дверей, монтаж и сервис.
             </p>
-            <a
-              href={contact.phoneHref}
-              className="mt-4 inline-block text-lg font-semibold text-white hover:text-accent"
-            >
-              {contact.phoneNumber}
-            </a>
-            <p className="mt-1 text-xs text-slate-500">{showroomHours}</p>
+            
+            <div className="mt-6 mb-6">
+              <ContactSocialRow />
+            </div>
           </div>
 
           {footerLinkGroups.map((group) => (

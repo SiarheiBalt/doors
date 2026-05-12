@@ -14,8 +14,8 @@ export default function Home() {
       <WhyUs />
       <Projects />
       <Process />
-      <FinalCta />
-      <HomeMap />
+      {/* <FinalCta /> */}
+      {/* <HomeMap /> */}
     </div>
   );
 }
