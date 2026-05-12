@@ -1,9 +1,34 @@
-export default function PortfolioCasePage() {
+import type { ComponentType } from 'react'
+
+type PortfolioCaseParams = {
+    params: {
+        case: string
+    }
+}
+
+type PortfolioCaseModule = {
+    default: ComponentType
+    metadata?: {
+        title?: string
+        [key: string]: unknown
+    }
+}
+
+export const dynamicParams = false
+
+export default async function PortfolioCasePage({ params }: PortfolioCaseParams) {
+    const {case: caseSlug} = await params
+    const caseModule = await (await import(`@/content/portfolio/${caseSlug}.md`)) as PortfolioCaseModule
+    const CaseContent = caseModule.default
+    const caseTitle = caseModule.metadata?.title ?? 'Portfolio Case'
+
     return (
         <div className="min-h-screen">
             <div className="pt-28 pb-14 md:pt-32 md:pb-16">
                 <div className="home-container">
-                    <h1 className="home-section-heading text-slate-900 text-left">Portfolio Case</h1>
+                    <div className="mt-6 max-w-3xl">
+                        <CaseContent />
+                    </div>
                 </div>
             </div>
         </div>
@@ -11,16 +36,5 @@ export default function PortfolioCasePage() {
 }
 
 export async function generateStaticParams() {
-    return [
-        { case: 'case-1' },
-    ]
-}
-
-export async function generateStaticProps(params: { case: string }) {
-
-    return {
-        props: {
-            params,
-        },
-    }
+    return [{ case: 'case-1' }]
 }

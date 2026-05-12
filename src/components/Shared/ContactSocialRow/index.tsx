@@ -44,7 +44,7 @@ export default function ContactSocialRow() {
           className={socialBtnClass}
           aria-label="Telegram"
         >
-          <Image src="images\social\telegram.svg" alt="Instagram" width={44} height={44} />
+          <Image src="\images\social\telegram.svg" alt="Instagram" width={44} height={44} />
         </a>
         <a
           href={social.whatsapp}
@@ -53,7 +53,7 @@ export default function ContactSocialRow() {
           className={socialBtnClass}
           aria-label="WhatsApp"
         >
-          <Image src="images\social\whatsapp.svg" alt="Instagram" width={44} height={44} />
+          <Image src="\images\social\whatsapp.svg" alt="Instagram" width={44} height={44} />
         </a>
         <a
           href={social.instagram}
@@ -62,7 +62,7 @@ export default function ContactSocialRow() {
           className={socialBtnClass}
           aria-label="Instagram"
         >
-          <Image src="images\social\instagram.svg" alt="Instagram" width={44} height={44} />
+          <Image src="\images\social\instagram.svg" alt="Instagram" width={44} height={44} />
         </a>
       </div>
     </div>
