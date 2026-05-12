@@ -67,7 +67,7 @@ export default function StyleSplit() {
                 ))}
               </ul>
               <div className="mt-8">
-                <Link href="/catalog" className="home-btn-outline min-w-[200px]">
+                <Link href="/catalog" className="home-btn-accent min-w-[200px]">
                   {styleSplit.orange.cta}
                 </Link>
               </div>
