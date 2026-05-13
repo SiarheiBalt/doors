@@ -1,4 +1,4 @@
-project_id = "doors"
+project_id = "doors-shop"
 
 # Публичная форма без Supabase Auth: без проверки JWT (см. supabase/functions/contact-telegram)
 [functions.contact-telegram]
