@@ -5,7 +5,7 @@ import cs from "classnames";
 import { casesDataInformation, CaseDataInformationType } from "@/src/app/portfolio/[case]/page";
 import Link from "next/link";
 
-export default function Projects() {
+export default function Projects({hideTitle = false}: {hideTitle?: boolean}) {
 
   const casesDataInformationArray = Object.values(casesDataInformation).map((caseData) => ({
     title: caseData.title,
@@ -15,8 +15,6 @@ export default function Projects() {
     mainImage: caseData.mainImage,
     href: caseData.href,
   }));
-
-  console.log(casesDataInformationArray);
 
   return (
     <section id="portfolio" className="home-section scroll-mt-24 bg-surface">
@@ -30,12 +28,11 @@ export default function Projects() {
               {casesText.title}
             </h2>
           </div>
-          <a
-            href="#portfolio"
-            className="text-sm font-medium text-accent underline-offset-4 hover:underline"
-          >
-            {casesText.viewAll}
-          </a>
+          {!hideTitle && (
+            <Link href="/portfolio" className="text-sm font-medium text-accent underline-offset-4 hover:underline">
+              {casesText.viewAll}
+            </Link>
+          )}
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
