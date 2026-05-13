@@ -76,6 +76,9 @@ Deno.serve(async (req: Request) => {
 
   const token = Deno.env.get("TELEGRAM_BOT_TOKEN");
   const chatId = Deno.env.get("TELEGRAM_CHAT_ID");
+
+  console.log('chatId', chatId);
+
   if (!token || !chatId) {
     console.error("Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID");
     return jsonResponse(
