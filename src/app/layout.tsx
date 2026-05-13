@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 import Header from "../components/Header/index";
 import Footer from "../components/Footer/index";
+import QueryProvider from "../providers/QueryProvider";
 import StoreProvider from "../providers/StoreProvider";
 import React from "react";
 
@@ -29,7 +30,9 @@ export default function RootLayout({
       <body className={`${manrope.className} flex min-h-screen flex-col antialiased`}>
           <Header/>
           <StoreProvider>
+            <QueryProvider>
               <main className="flex-1">{children}</main>
+            </QueryProvider>
           </StoreProvider>
           <Footer/>
       </body>
