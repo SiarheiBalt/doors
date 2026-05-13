@@ -29,3 +29,8 @@ export const contactsPage = {
 export const contactsMapUi = {
   openInGoogleMaps: "Открыть в Google Картах",
 } as const;
+
+export enum Shop {
+  PREMIUM = 'PREMIUM',
+  ORANGE = 'ORANGE',
+}
