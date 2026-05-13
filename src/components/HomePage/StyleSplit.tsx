@@ -23,7 +23,7 @@ export default function StyleSplit() {
               className="absolute inset-0 bg-gradient-to-br from-black/88 via-black/55 to-black/35"
               aria-hidden
             />
-            <div className="relative z-10 flex flex-1 flex-col p-8 md:p-10">
+            <div className="relative flex flex-1 flex-col p-8 md:p-10">
               <h2 className="text-2xl font-bold tracking-tight text-white">{styleSplit.premium.name}</h2>
               <p className="mt-4 max-w-xs text-lg text-slate-100/95">{styleSplit.premium.lead}</p>
               <ul className="mt-6 space-y-3">
@@ -55,7 +55,7 @@ export default function StyleSplit() {
               className="absolute inset-0 bg-gradient-to-br from-stone-900/82 via-stone-900/45 to-black/25"
               aria-hidden
             />
-            <div className="relative z-10 flex flex-1 flex-col p-8 md:p-10">
+            <div className="relative flex flex-1 flex-col p-8 md:p-10">
               <h2 className="text-2xl font-bold tracking-tight">{styleSplit.orange.name}</h2>
               <p className="mt-4 max-w-xs text-lg font-medium">{styleSplit.orange.lead}</p>
               <ul className="mt-6 space-y-3">
