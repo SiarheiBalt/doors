@@ -1,9 +1,23 @@
 import Image from "next/image";
 
-import { projects } from "../../content/home";
+import { casesText } from "../../content/home";
 import cs from "classnames";
+import { casesDataInformation, CaseDataInformationType } from "@/src/app/portfolio/[case]/page";
+import Link from "next/link";
 
 export default function Projects() {
+
+  const casesDataInformationArray = Object.values(casesDataInformation).map((caseData) => ({
+    title: caseData.title,
+    subtitle: caseData.subtitle,
+    imageCount: caseData.imageCount,
+    shop: caseData.shop,
+    mainImage: caseData.mainImage,
+    href: caseData.href,
+  }));
+
+  console.log(casesDataInformationArray);
+
   return (
     <section id="portfolio" className="home-section scroll-mt-24 bg-surface">
       <div className="home-container">
@@ -13,26 +27,26 @@ export default function Projects() {
               Портфолио
             </p>
             <h2 className="mt-3 text-left text-2xl font-bold tracking-tight text-white md:text-3xl lg:text-4xl">
-              {projects.title}
+              {casesText.title}
             </h2>
           </div>
           <a
             href="#portfolio"
             className="text-sm font-medium text-accent underline-offset-4 hover:underline"
           >
-            {projects.viewAll}
+            {casesText.viewAll}
           </a>
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {projects.cards.map((card) => (
+          {casesDataInformationArray.map((caseData: CaseDataInformationType) => (
             <article
-              key={card.title}
-              className="group relative overflow-hidden rounded-2xl border border-white/10"
+              key={caseData.title}
+              className="group relative overflow-hidden border border-white/10"
             >
               <div className="relative aspect-[4/5] w-full">
                 <Image
-                  src="/profil-doors-grodno-hero.webp"
+                  src={caseData.mainImage}
                   alt=""
                   fill
                   className="object-cover transition duration-500 group-hover:scale-105"
@@ -43,21 +57,20 @@ export default function Projects() {
                   <span
                     className={cs(
                       "inline-block rounded px-2 py-0.5 text-xs font-bold uppercase tracking-wider",
-                      card.badge === "PREMIUM"
+                      caseData.shop === "PREMIUM"
                         ? "bg-accent/90 text-stone-900"
                         : "bg-amber-200/90 text-stone-900",
                     )}
                   >
-                    {card.badge}
+                    {caseData.shop}
                   </span>
-                  <h3 className="mt-3 text-xl font-bold text-white">{card.title}</h3>
-                  <p className="mt-2 text-sm text-slate-300">{card.desc}</p>
-                  <a
-                    href="#"
-                    className="mt-4 inline-flex text-sm font-semibold text-accent hover:underline"
-                  >
-                    {card.cta}
-                  </a>
+                  <h3 className="mt-3 text-xl font-bold text-white">{caseData.title}</h3>
+                  <p className="mt-2 text-sm text-slate-300">{caseData.subtitle}</p>
+                  <Link href={caseData.href}>
+                    <p className="mt-4 inline-flex text-sm font-semibold text-accent hover:underline">
+                      {casesText.cta}
+                    </p>
+                  </Link>
                 </div>
               </div>
             </article>

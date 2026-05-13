@@ -18,13 +18,23 @@ type PortfolioCaseModule = {
 
 export const dynamicParams = false
 
-export const casesDataInformation: Record<string, { title: string; subtitle: string; imageCount: number; shop: Shop; mainImage: string }> = {
+export type CaseDataInformationType = {
+    title: string;
+    subtitle: string;
+    imageCount: number;
+    shop: Shop;
+    mainImage: string;
+    href: string;
+}
+
+export const casesDataInformation: Record<string, CaseDataInformationType> = {
     'case-1': {
         title: 'Дом в Коробчицах',
         subtitle: 'Реализация проекта в современном минималистичном стиле',
         imageCount: 9,
         shop: Shop.PREMIUM,
-        mainImage: '/images/portfolio/case-1/main-image.webp',
+        mainImage: '/images/portfolio/case-1/image-1.webp',
+        href: '/portfolio/case-1',
     },
 }
 

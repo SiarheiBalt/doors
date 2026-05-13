@@ -64,29 +64,10 @@ export const whyUs = {
   ],
 } as const;
 
-export const projects = {
+export const casesText = {
   title: "Реальные проекты",
-  viewAll: "Смотреть все проекты",
-  cards: [
-    {
-      badge: "PREMIUM" as const,
-      title: "Квартира 72 м², Гродно",
-      desc: "Скрытые двери, серия AT, заказная высота проёмов.",
-      cta: "Смотреть проект",
-    },
-    {
-      badge: "ORANGE" as const,
-      title: "Дом в Коробчицах",
-      desc: "Светлые интерьеры, практичные решения для семьи.",
-      cta: "Смотреть проект",
-    },
-    {
-      badge: "PREMIUM" as const,
-      title: "Квартира в новостройке",
-      desc: "Стеклянные перегородки и минималистичные фурнитурные решения.",
-      cta: "Смотреть проект",
-    },
-  ],
+  viewAll: "Смотреть все проекты", 
+  cta: "Смотреть проект",
 } as const;
 
 export const process = {
