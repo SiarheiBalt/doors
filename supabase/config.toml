@@ -1,0 +1,5 @@
+project_id = "doors"
+
+# Публичная форма без Supabase Auth: без проверки JWT (см. supabase/functions/contact-telegram)
+[functions.contact-telegram]
+verify_jwt = false
