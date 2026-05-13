@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import SalonBookingButton from "../Contacts/SalonBookingButton";
 import { hero } from "../../content/home";
 
 export default function Hero() {
@@ -33,9 +34,9 @@ export default function Hero() {
           <Link href="/catalog" className="home-btn-accent min-w-[200px]">
             {hero.ctaCatalog}
           </Link>
-          <Link href="/contacts" className="home-btn-outline min-w-[200px]">
+          <SalonBookingButton className="home-btn-outline min-w-[200px]">
             {hero.ctaSalon}
-          </Link>
+          </SalonBookingButton>
         </div>
 
         <div>

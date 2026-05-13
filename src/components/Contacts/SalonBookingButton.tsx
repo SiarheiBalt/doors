@@ -1,6 +1,6 @@
 "use client";
 
-import { type ButtonHTMLAttributes, useEffect, useId, useState } from "react";
+import { type ButtonHTMLAttributes, useEffect, useId, useRef, useState } from "react";
 import classNames from "classnames";
 
 import Modal from "../Shared/Modal";
@@ -20,22 +20,35 @@ export default function SalonBookingButton({
 }: SalonBookingButtonProps) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhoneNumber] = useState("");
   const [comment, setComment] = useState("");
   const [honeypot, setHoneypot] = useState("");
 
+  const setPhone = (value: string) => {
+    setPhoneNumber(value);
+  }
+
   const idBase = useId();
+  const nameInputRef = useRef<HTMLInputElement>(null);
   const { mutate, reset, isPending, isSuccess, isError, error } =
     useSubmitContactLead();
 
   useEffect(() => {
     if (!open) return;
     setName("");
-    setPhone("");
+    setPhone("+375");
     setComment("");
     setHoneypot("");
     reset();
   }, [open, reset]);
+
+  useEffect(() => {
+    if (!open || isSuccess) return;
+    const id = requestAnimationFrame(() => {
+      nameInputRef.current?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(id);
+  }, [open, isSuccess]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,7 +75,7 @@ export default function SalonBookingButton({
       {open && (
         <Modal
           variant="surface"
-          title={contactLeadModal.title}
+          title={isSuccess ? contactLeadModal.successTitle : contactLeadModal.title}
           isCloseOutside={!isPending}
           onClose={() => {
             if (isPending) return;
@@ -72,9 +85,6 @@ export default function SalonBookingButton({
             <div className="space-y-6">
               {isSuccess ? (
                 <div className="space-y-4 text-center">
-                  <p className="text-lg font-semibold text-white">
-                    {contactLeadModal.successTitle}
-                  </p>
                   <p className="text-sm leading-relaxed text-slate-400">
                     {contactLeadModal.successMessage}
                   </p>
@@ -114,6 +124,7 @@ export default function SalonBookingButton({
                       {contactLeadModal.fields.name}
                     </label>
                     <input
+                      ref={nameInputRef}
                       id={`${idBase}-name`}
                       required
                       maxLength={120}
@@ -135,7 +146,7 @@ export default function SalonBookingButton({
                     <input
                       id={`${idBase}-phone`}
                       required
-                      maxLength={40}
+                      maxLength={13}
                       autoComplete="tel"
                       inputMode="tel"
                       className={inputClassName}
@@ -173,7 +184,7 @@ export default function SalonBookingButton({
                       </span>{" "}
                       {error instanceof Error
                         ? error.message
-                        : "Попробуйте позже."}
+                        : contactLeadModal.tryLater}
                     </p>
                   )}
 

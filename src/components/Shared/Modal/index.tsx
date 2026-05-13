@@ -1,32 +1,92 @@
-"use client"
-import React, {FC, useRef} from 'react';
-import cl from './modal.module.css'
-import {MouseEventType, useOnClickOutside} from "../../../hooks/event";
-import DelLogo from "./images/delete.svg";
+"use client";
+
+import React, {
+  type FC,
+  type ReactNode,
+  useId,
+  useRef,
+} from "react";
+import classNames from "classnames";
+
+import cl from "./modal.module.css";
+import { MouseEventType, useOnClickOutside } from "../../../hooks/event";
+
+export type ModalVariant = "light" | "surface";
 
 type ModalProps = {
-  content: any,
-  title?: string | undefined,
-  onClose?: () => void | undefined,
-  isCloseOutside: boolean | undefined
-}
+  content: ReactNode;
+  title?: string | undefined;
+  onClose?: () => void | undefined;
+  isCloseOutside: boolean | undefined;
+  variant?: ModalVariant;
+};
 
-const Modal:FC<ModalProps> = ({content, title, onClose, isCloseOutside= true}) => {
-  const containerRef = useRef<HTMLDivElement | null>(null)
+const Modal: FC<ModalProps> = ({
+  content,
+  title,
+  onClose,
+  isCloseOutside = true,
+  variant = "light",
+}) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const titleId = useId();
 
-  useOnClickOutside(containerRef, MouseEventType.mouseup, () => (onClose && isCloseOutside) && onClose())
+  useOnClickOutside(containerRef, MouseEventType.mouseup, () => {
+    if (onClose && isCloseOutside) onClose();
+  });
+
+  const isSurface = variant === "surface";
 
   return (
-    <div className={cl.wrapper}>
-      <div className={cl.container} ref={containerRef}>
-        <div className={cl.header}>
-          <span className={cl.title}>{title || ""}</span>
-          {/*// eslint-disable-next-line*/}
-          {onClose && <img
-              src={DelLogo.src}
-              className={cl.closeIco}
-              onClick={() => onClose && onClose()}
-          />}
+    <div
+      className={classNames(cl.wrapper, isSurface && cl.wrapperSurface)}
+      role="presentation"
+    >
+      <div
+        className={classNames(
+          cl.container,
+          isSurface ? cl.containerSurface : cl.containerLight,
+        )}
+        ref={containerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={title ? titleId : undefined}
+      >
+        <div className={classNames(cl.header, isSurface && cl.headerSurface)}>
+          {title ? (
+            <span
+              className={classNames(cl.title, isSurface && cl.titleSurface)}
+              id={titleId}
+            >
+              {title}
+            </span>
+          ) : null}
+          {onClose ? (
+            <button
+              type="button"
+              className={classNames(
+                cl.closeBtn,
+                isSurface && cl.closeBtnSurface,
+              )}
+              aria-label="Закрыть"
+              onClick={() => onClose()}
+            >
+              <svg
+                className={cl.closeSvg}
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden
+              >
+                <path
+                  d="M2.16203 0.7072C1.77151 0.316676 1.13834 0.316676 0.74782 0.7072C0.357296 1.09772 0.357296 1.73089 0.747821 2.12141L5.58612 6.95972L0.706956 11.8389C0.316431 12.2294 0.316431 12.8626 0.706956 13.2531C1.09748 13.6436 1.73065 13.6436 2.12117 13.2531L7.00034 8.37393L11.8791 13.2527C12.2696 13.6432 12.9028 13.6432 13.2933 13.2527C13.6838 12.8621 13.6838 12.229 13.2933 11.8384L8.41455 6.95972L13.2524 2.12186C13.6429 1.73133 13.6429 1.09817 13.2524 0.707642C12.8619 0.317118 12.2287 0.317118 11.8382 0.707643L7.00034 5.5455L2.16203 0.7072Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          ) : null}
         </div>
         {content}
       </div>

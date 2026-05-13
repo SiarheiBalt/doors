@@ -25,6 +25,31 @@ export const contactsPage = {
   },
 } as const;
 
+/** Модальная форма «Записаться в салон» (Edge → Telegram). */
+export const contactLeadModal = {
+  title: "Записаться в салон",
+  lead: "Оставьте контакты — перезвоним и согласуем удобное время визита или консультации.",
+  fields: {
+    name: "Имя",
+    phone: "Телефон",
+    comment: "Комментарий",
+  },
+  placeholders: {
+    name: "Как к вам обращаться",
+    phone: "+375 (__) ___-__-__",
+    comment:
+      "Например: удобное время звонка, вопрос по коллекции или адресу салона…",
+  },
+  submit: "Отправить заявку",
+  submitting: "Отправляем…",
+  successTitle: "Заявка отправлена",
+  successMessage:
+    "Спасибо! Мы свяжемся с вами в ближайшее время. Если срочно — позвоните по телефону салона.",
+  close: "Закрыть",
+  errorPrefix: "Не получилось отправить:",
+  tryLater: "Попробуйте позже."
+} as const;
+
 /** Подписи к блокам карт (компонент HomeMap). */
 export const contactsMapUi = {
   openInGoogleMaps: "Открыть в Google Картах",

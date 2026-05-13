@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 import ContactSocialRow from "../../components/Shared/ContactSocialRow";
+import SalonBookingButton from "../../components/Contacts/SalonBookingButton";
 import HomeMap from "../../components/HomePage/HomeMap";
-import { contactsMeta, contactsPage } from "../../content/contacts";
+import { contactLeadModal, contactsMeta, contactsPage } from "../../content/contacts";
 import { showroomLocations } from "../../constants";
 
 export const metadata: Metadata = {
@@ -31,6 +32,11 @@ export default function ContactsPage() {
 
           <div className="max-w-4xl mt-6 text-left">
             <ContactSocialRow />
+            <div className="mt-6 flex flex-wrap gap-3">
+              <SalonBookingButton className="home-btn-outline min-w-[200px]">
+                {contactLeadModal.title}
+              </SalonBookingButton>
+            </div>
           </div>
         </div>
       </div>
