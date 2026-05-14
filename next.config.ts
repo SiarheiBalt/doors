@@ -1,7 +1,7 @@
-const createMDX = require('@next/mdx')
+import createMDX from '@next/mdx'
+import type { NextConfig } from 'next'
 
-/** @type {import('next').NextConfig} */
-const baseConfig = {
+const baseConfig: NextConfig = {
     output: 'export',
     images: {
         unoptimized: true,
@@ -23,4 +23,4 @@ const nextConfig = withMDX({
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 })
 
-module.exports = nextConfig
+export default nextConfig
