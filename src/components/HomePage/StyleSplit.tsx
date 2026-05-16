@@ -56,7 +56,16 @@ export default function StyleSplit() {
               aria-hidden
             />
             <div className="relative flex flex-1 flex-col p-8 md:p-10">
-              <h2 className="text-2xl font-bold tracking-tight">{styleSplit.orange.name}</h2>
+              <h2 className="m-0 w-fit max-w-full rounded-lg bg-white/90 px-3 py-2.5 md:px-4 md:py-3">
+                <Image
+                  src="/logo-orange.png"
+                  alt="PROFILDOORS ORANGE"
+                  width={1333}
+                  height={526}
+                  className="h-14 w-auto max-w-full object-contain object-left md:h-16"
+                  sizes="(max-width: 768px) 100vw, 406px"
+                />
+              </h2>
               <p className="mt-4 max-w-xs text-lg font-medium">{styleSplit.orange.lead}</p>
               <ul className="mt-6 space-y-3">
                 {styleSplit.orange.bullets.map((line) => (
