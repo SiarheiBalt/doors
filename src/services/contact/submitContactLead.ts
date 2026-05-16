@@ -1,10 +1,4 @@
-import {
-  FunctionsFetchError,
-  FunctionsHttpError,
-  FunctionsRelayError,
-} from "@supabase/functions-js";
-
-import { getBrowserSupabase } from "../supabase/browser";
+import { getBaseUrl } from "../constants";
 
 export type ContactLeadPayload = {
   name: string;
@@ -14,13 +8,23 @@ export type ContactLeadPayload = {
   website?: string;
 };
 
-type InvokeBody = {
+type ResponseBody = {
   ok?: boolean;
   error?: string;
 };
 
+function getContactTelegramEndpoint(): string {
+  const raw = getBaseUrl() + "/api/contact-telegram";
+  if (!raw) {
+    throw new Error(
+      "Не настроен адрес отправки заявок (NEXT_PUBLIC_CONTACT_TELEGRAM_URL).",
+    );
+  }
+  return raw.replace(/\/+$/, "");
+}
+
 export async function submitContactLead(payload: ContactLeadPayload) {
-  const supabase = getBrowserSupabase();
+  const url = getContactTelegramEndpoint();
   const body = {
     name: payload.name.trim(),
     phone: payload.phone.trim(),
@@ -28,43 +32,38 @@ export async function submitContactLead(payload: ContactLeadPayload) {
     website: payload.website?.trim() ?? "",
   };
 
-  const { data, error } = await supabase.functions.invoke<InvokeBody>(
-    "contact-telegram",
-    { body },
-  );
-
-  if (error instanceof FunctionsFetchError) {
+  let res: Response;
+  try {
+    console.log('url', url);
+    console.log('body', body);
+    res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+  } catch {
     throw new Error(
       "Проверьте интернет-соединение и попробуйте ещё раз.",
     );
   }
 
-  if (error instanceof FunctionsRelayError) {
+  const data = (await res.json().catch(() => null)) as ResponseBody | null;
+
+  if (res.status >= 500) {
     throw new Error(
-      "Сервис временно недоступен. Попробуйте через минуту или позвоните нам.",
+      data?.error ??
+        "Сервис временно недоступен. Попробуйте через минуту или позвоните нам.",
     );
   }
 
-  if (error instanceof FunctionsHttpError) {
-    const parsed = await error.context.json().catch(() => null) as {
-      error?: string;
-      ok?: boolean;
-    } | null;
+  if (!res.ok) {
     const msg =
-      parsed?.error ??
+      data?.error ??
       "Не удалось отправить заявку. Попробуйте ещё раз или напишите в мессенджер.";
     throw new Error(msg);
   }
 
-  if (error) {
-    throw new Error(
-      error instanceof Error ? error.message : "Ошибка сети при отправке заявки.",
-    );
-  }
-
   if (!data?.ok) {
-    throw new Error(
-      data?.error ?? "Не удалось отправить заявку.",
-    );
+    throw new Error(data?.error ?? "Не удалось отправить заявку.");
   }
 }

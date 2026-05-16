@@ -10,13 +10,14 @@
 | UI | **React** + **TypeScript** |
 | Стили | **Tailwind CSS**, CSS-модули |
 | Состояние | **Redux Toolkit** + **react-redux** |
+| Запросы к API | **TanStack Query** (`@tanstack/react-query`) |
 | Таблицы | **rc-table** |
 | Слайдер на витрине | **Swiper** |
 | Линт | **ESLint 9** с **eslint-config-next** (flat-config: `eslint.config.mjs`) |
 
-Подробнее про слои состояния (URL, Redux, планируемый TanStack Query): **[state.md](./state.md)**.
+Подробнее про слои состояния (URL, Redux, TanStack Query): **[state.md](./state.md)**.
 
-Бэкенда и БД в репозитории нет; при развитии планируются **Supabase** и публичная витрина в стиле крупных каталогов.
+Бэкенда и БД в репозитории нет; сетевые вызовы делаются через **TanStack Query** к произвольным HTTP-эндпоинтам (например, отдельный сервис для заявок).
 
 ## Команды
 
