@@ -57,8 +57,8 @@ export type DoorSeries = {
     description: string,
     shortLabel: string | undefined;
     seriesName: string,
-    molding?: Molding | null, // Погонаж
-    openingSystems?: OpeningSystemVariant | null,
+    molding?: Molding[] | null, // Погонаж
+    openingSystems?: OpeningSystemVariant[] | null,
   }
 
 export type DoorModel = {
